@@ -34,8 +34,9 @@ public class Array {
         }
     }
     
-    public int media(){
-        int suma = 0, media, m = 0;
+    public double media(){
+        int suma = 0, m = 0;
+        double media;
         for (int i = 0; i < a.length; i++){
             suma += a[i];
             m++;
@@ -69,8 +70,6 @@ public class Array {
             for (int j = 0; j < b.a.length; j++){
                 if (a[i] == b.a[j] && i == j){
                         System.out.println("ambos vectores tienen el valor "+a[i]+" en la posicion "+i);
-                }else {
-                    System.out.println("no hay coincidencias en esta posicion");
                 }
             }
         }
