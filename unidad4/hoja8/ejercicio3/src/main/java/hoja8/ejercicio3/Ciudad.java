@@ -9,19 +9,28 @@ package hoja8.ejercicio3;
  * @author DAM122
  */
 public class Ciudad {
+
     private String nombre;
     private float latitud, longitud;
-    private int habitantes;    
-    public Ciudad(String nombre, float lat, float lon, int habitantes) {
-        this.nombre = nombre ;
-        this.latitud = lat ;
-        this.longitud = lon ;
-        this.habitantes = habitantes ;    }    
+    private int habitantes;
+
+    public Ciudad(String _nombre, float lat, float lon, int habitantes) {
+        nombre = _nombre;
+        latitud = lat;
+        longitud = lon;
+        habitantes = habitantes;
+    }
+
     public String toString() {
-        String cadena = nombre+" tiene "+habitantes+" habitantes";
-        return cadena;}// = String.format("%s tiene %d habitantes.", this.nombre, this.habitantes)    
+        String cadena = nombre + " tiene " + habitantes + " habitantes";
+        return cadena;
+    }// = String.format("%s tiene %d habitantes.", this.nombre, this.habitantes)    
+
     public int getHabitantes() {
-        return habitantes;    }
+        return habitantes;
+    }
+
     public String getNombre() {
-        return nombre;    }
+        return nombre;
+    }
 }
