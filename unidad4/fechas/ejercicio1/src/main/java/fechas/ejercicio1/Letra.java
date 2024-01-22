@@ -33,7 +33,9 @@ public class Letra {
     }
     
     public boolean vencida(){
-        return fechaVenc.isBefore(LocalDate.now());//isBefore/isAfter nos indican si la fecha introducida es anterior o posterior a la fecha con la que queremos comparar en este caso la fecha atual
+        return fechaVenc.isBefore(LocalDate.now());/*isBefore/isAfter nos indican si la fecha 
+        introducida es anterior o posterior a la fecha con la que queremos comparar 
+        en este caso la fecha atual*/
     }
     
     public void demora(int n){
