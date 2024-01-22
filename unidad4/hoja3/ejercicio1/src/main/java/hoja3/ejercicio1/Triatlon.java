@@ -58,15 +58,12 @@ public class Triatlon {
             return media;
     }
     
-    public boolean esSeleccionado(){
+    //metodo que nos dice si algo es verdadero o falso
+    //en funcion dee si algun valor de un array cumple la condicion
+    public boolean esSeleccionado(){ boolean clasifica = false;
         for ( int i = 0; i < puntos.length; i++){
-            if (puntos[i]>10){
-              return true;
-            }  
-            
-        }
-        return false;
-    }
+            if (puntos[i]>10){ clasifica = true; }   }
+        return clasifica;    }
     
     public String mostrar (){
         String cadena = "dorsal: "+dorsal+", nombre: "+nombre+", puntuaciones: ";
