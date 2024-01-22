@@ -11,21 +11,23 @@ package hoja1.ejercicio7;
 public class Ejercicio7 {
 
     public static void main(String[] args) {
-         int mayor = 0;
-        int [] a = new int [10];
-        int [] b = new int [10];
-        
+         
+        int [] a = new int [10];        
         for (int i = 0; i<=a.length-1; i++){
             a[i] = (int) Math.floor(Math.random()*50);
-            System.out.print(a[i]+" ");
-            }System.out.println("");
-        
-        for (int i = 0; i<=a.length-1; i++){
-            b[i]=a[i];         
-            if (a[i]>mayor){
-                mayor = b[i];    
+            System.out.print(a[i]+" ");}System.out.println("");        
+            //ordenamos un array de mayor a menor 
+            for (int i = 0; i< a.length; i++){
+            for (int j = 0; j < a.length-i-1; j++){                
+                if (a[j] < a[j+1]){
+                int aux = a[j];
+                a[j] = a[j+1];
+                a[j+1] = aux;
+                }}}   
+        for (int i = 0; i< a.length; i++){
+            System.out.print(a[i]+" ");}System.out.println(""); }     
                
-            } System.out.print(b[i]+" ");
-        }
+            
+        
     }
-}
+
