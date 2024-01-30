@@ -10,7 +10,8 @@ package h1.ej2;
  */
 public class Bombilla {
     
-    private static Luces general = Luces.OFF, bombilla = Luces.OFF;
+    private static Luces general = Luces.OFF;//pertenece a la clase
+    private Luces bombilla = Luces.OFF;//pertenece al objeto
     
    
     
@@ -18,7 +19,7 @@ public class Bombilla {
        bombilla = Luces.ON;
     }
     
-     public static void general(){
+     public static void general(){//no necesitamos crear objetos
          //general = general == Luces.OFF?Luces.ON:Luces.OFF;
          if(general == Luces.ON){
              general = Luces.OFF;
@@ -30,7 +31,7 @@ public class Bombilla {
          }         
      }
      
-     public void bombilla(){
+     public void bombilla(){//tenemos que tener un objeto creado
          //bombilla = bombilla == Luces.OFF?Luces.ON:Luces.OFF;
         if(bombilla == Luces.ON){
              bombilla = Luces.OFF;
