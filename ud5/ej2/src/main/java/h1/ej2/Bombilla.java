@@ -19,6 +19,7 @@ public class Bombilla {
     }
     
      public static void general(){
+         //general = general == Luces.OFF?Luces.ON:Luces.OFF;
          if(general == Luces.ON){
              general = Luces.OFF;
              System.out.println("\tinterruptor general apagado");
@@ -30,6 +31,7 @@ public class Bombilla {
      }
      
      public void bombilla(){
+         //bombilla = bombilla == Luces.OFF?Luces.ON:Luces.OFF;
         if(bombilla == Luces.ON){
              bombilla = Luces.OFF;
              System.out.println("\tinterruptor de bombilla apagado");
