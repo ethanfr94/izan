@@ -10,39 +10,39 @@ package h1.ej2;
  */
 public class Bombilla {
     
-    private static Estado general = Estado.OFF, bombilla = Estado.OFF;
+    private static Luces general = Luces.OFF, bombilla = Luces.OFF;
     
    
     
     public Bombilla(){
-       bombilla = Estado.ON;
+       bombilla = Luces.ON;
     }
     
      public static void general(){
-         if(general == Estado.ON){
-             general = Estado.OFF;
+         if(general == Luces.ON){
+             general = Luces.OFF;
              System.out.println("\tinterruptor general apagado");
          }
-         else if(general == Estado.OFF){
-             general = Estado.ON;
+         else if(general == Luces.OFF){
+             general = Luces.ON;
              System.out.println("\tinterruptor general encendido");
          }         
      }
      
      public void bombilla(){
-        if(bombilla == Estado.ON){
-             bombilla = Estado.OFF;
+        if(bombilla == Luces.ON){
+             bombilla = Luces.OFF;
              System.out.println("\tinterruptor de bombilla apagado");
          }
-         else if(bombilla == Estado.OFF){
-             bombilla = Estado.ON;
+         else if(bombilla == Luces.OFF){
+             bombilla = Luces.ON;
              System.out.println("\tinterruptor de bombilla encendido");
          }
      }
     
      public void luce(){
          boolean luce;
-         if(bombilla == Estado.ON && general == Estado.ON){
+         if(bombilla == Luces.ON && general == Luces.ON){
              System.out.println("\tla bombilla esta encendida");
          }
          else{             

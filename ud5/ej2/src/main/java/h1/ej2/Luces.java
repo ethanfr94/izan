@@ -8,6 +8,6 @@ package h1.ej2;
  *
  * @author DAM122
  */
-public enum Estado {
+public enum Luces {
     ON, OFF
 }
