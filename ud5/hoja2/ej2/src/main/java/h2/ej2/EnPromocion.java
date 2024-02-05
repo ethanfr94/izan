@@ -15,8 +15,11 @@ public class EnPromocion extends Articulo{
         super(codigo, descripcion, precio);
         this.descuento = descuento;
     }
-    
-    
+
+    public double getDescuento() {
+        return descuento;
+    }
+        
     @Override
     public double getPrecio() {
         return precio * descuento;
@@ -25,6 +28,7 @@ public class EnPromocion extends Articulo{
     @Override
     public void datos(){
         super.datos();
+        System.out.println("descuento del: "+getDescuento());
     }
     
     

@@ -12,31 +12,26 @@ public class Perecedero extends Articulo {
     private int mes, ano;
     private String caducidad;
 
-    public Perecedero(int mes, int ano, String caducidad, String codigo, String descripcion, double precio) {
-        super(codigo, descripcion, precio);
-        this.mes = mes;
-        this.ano = ano;
-        this.caducidad = caducidad;
+    public Perecedero(int mes, int ano, String codigo, String descripcion, double precio) {
+        super(codigo, descripcion, precio);        
+        this.caducidad = mes+"/"+ano;
     }
 
-    public int getMes() {
+    public  int getMes() {
         return mes;
     }
 
     public int getAno() {
         return ano;
     }
-
-    public String getCaducidad() {
-        return caducidad;
-    }
     
-    
-    
+    @Override
     public void datos(){
         super.datos();
-        System.out.println("exp: "+getMes()+"/"+getAno()+
-                           "caducidad: "+getCaducidad());
+        System.out.println("caducidad: "+caducidad);
     }
     
+    public void caducados(){
+        if ()
+    }
 }

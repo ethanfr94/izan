@@ -31,9 +31,9 @@ public class Articulo {
     }
     
     public void datos(){
-        System.out.println("el codigo del articulo es: "+getCodigo()+
-                           "el articulos es: "+getDescripcion()+
-                           "el precio del articulo es: "+getPrecio());
+        System.out.println("cod: "+getCodigo()+
+                           " articulo: "+getDescripcion()+
+                           " precio: "+getPrecio());
     }
     
     
