@@ -4,12 +4,14 @@
  */
 package h2.ej2;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author DAM122
  */
 public class Perecedero extends Articulo {
-    private int mes, ano;
+    private static int mes, ano;
     private String caducidad;
 
     public Perecedero(int mes, int ano, String codigo, String descripcion, double precio) {
@@ -17,11 +19,11 @@ public class Perecedero extends Articulo {
         this.caducidad = mes+"/"+ano;
     }
 
-    public  int getMes() {
+    public static int getMes() {
         return mes;
     }
 
-    public int getAno() {
+    public static int getAno() {
         return ano;
     }
     
@@ -30,8 +32,13 @@ public class Perecedero extends Articulo {
         super.datos();
         System.out.println("caducidad: "+caducidad);
     }
-    
-    public void caducados(){
-        if ()
+
+    @Override
+    public void caducados() {
+        if (LocalDate.of(Perecedero.getAno(), Perecedero.getMes(), 31).isAfter(LocalDate.now())){
+            System.out.println("cod: "+codigo+" descripcion: "+descripcion);
+        }
     }
+    
+    
 }

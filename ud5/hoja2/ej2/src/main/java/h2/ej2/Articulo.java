@@ -4,13 +4,15 @@
  */
 package h2.ej2;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author DAM122
  */
 public class Articulo {
-    protected String codigo, descripcion;
-    protected double precio;
+    protected static String codigo, descripcion;
+    protected static double precio;
 
     public Articulo(String codigo, String descripcion, double precio) {
         this.codigo = codigo;
@@ -36,6 +38,8 @@ public class Articulo {
                            " precio: "+getPrecio());
     }
     
-    
+    public void caducados(){
+        
+    }
     
 }

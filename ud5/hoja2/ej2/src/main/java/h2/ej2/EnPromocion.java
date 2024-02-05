@@ -11,9 +11,9 @@ package h2.ej2;
 public class EnPromocion extends Articulo{
     private double descuento;
 
-    public EnPromocion(double descuento, String codigo, String descripcion, double precio) {
+    public EnPromocion(int descuento, String codigo, String descripcion, double precio) {
         super(codigo, descripcion, precio);
-        this.descuento = descuento;
+        this.descuento = descuento/100;
     }
 
     public double getDescuento() {
