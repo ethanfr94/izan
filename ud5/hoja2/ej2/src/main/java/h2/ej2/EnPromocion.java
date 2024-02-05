@@ -26,10 +26,10 @@ public class EnPromocion extends Articulo{
     }
 
     @Override
-    public void datos(){
-        super.datos();
-        System.out.println("descuento del: "+getDescuento());
+    public String datos(){
+        return super.datos()+"descuento del: "+getDescuento()+" precio con descuento: "+getPrecio();
     }
+    
     
     
 }

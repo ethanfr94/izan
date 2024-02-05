@@ -4,6 +4,7 @@
 
 package h2.ej2;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -18,6 +19,7 @@ public class Ej2 {
     
     
     for (int i = 0; i < art.length; i++){
+        
         if (i < art.length/2){
         System.out.println("introduce un mes de caducidad: ");
         int mes = new Scanner (System.in).nextInt();
@@ -29,6 +31,7 @@ public class Ej2 {
         double precio = new Scanner (System.in).nextDouble();
         art [i] = new Perecedero(mes, ano, String.valueOf(i+1), desc, precio);
         }
+        
         else{
         System.out.println("introduce descripcion del articulo");
         String desc = new Scanner (System.in).nextLine();
@@ -40,14 +43,37 @@ public class Ej2 {
         }    
     }
     
-     for (int i = 0; i < art.length; i++){
-        art[i].datos(); 
-     }
-     
-      for (int i = 0; i < art.length; i++){        
-        if (i < art.length/2){
-        art[i].caducados();        
+        System.out.println("datos de los articulos");
+        for (Articulo art1 : art) {
+            art1.datos();
         }
+        System.out.println("articulos caducados");
+      for (int i = 0; i < art.length; i++){  
+          
+        if (art[i] instanceof Perecedero){
+            Perecedero miart = (Perecedero)art[i];
+            System.out.println("articulo perecedero");
+            miart.caducados();        
+        }
+      }
+      
+      for (int i = 0; i < art.length; i++){ 
+        int aux = -1;
+        int desc = 0;
+        if (art[i] instanceof EnPromocion){  
+            
+            EnPromocion miart = (EnPromocion)art[i];
+            System.out.println("artculo en promocion");            
+            if (miart.getDescuento() > aux){
+                aux = i; 
+                desc = (int) miart.getDescuento();
+            }
+        }
+        if (aux ==-1){
+            System.out.println("no hay articulos en promocion");
+        }else {
+            System.out.println("el articulo con el maximo descuento es: "+art[aux]+" con un descuento del "+desc+"%");
+        }            
       }
     }
     

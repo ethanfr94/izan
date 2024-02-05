@@ -16,7 +16,8 @@ public class Perecedero extends Articulo {
 
     public Perecedero(int mes, int ano, String codigo, String descripcion, double precio) {
         super(codigo, descripcion, precio);        
-        this.caducidad = mes+"/"+ano;
+        this.mes = mes;
+        this.ano = ano;
     }
 
     public static int getMes() {
@@ -28,17 +29,21 @@ public class Perecedero extends Articulo {
     }
     
     @Override
-    public void datos(){
-        super.datos();
-        System.out.println("caducidad: "+caducidad);
+    public String datos(){
+        return super.datos()+"caducidad: "+mes+"/"+ano;
     }
 
     @Override
-    public void caducados() {
-        if (LocalDate.of(Perecedero.getAno(), Perecedero.getMes(), 31).isAfter(LocalDate.now())){
-            System.out.println("cod: "+codigo+" descripcion: "+descripcion);
+    public String caducados() {
+        String cadena="";
+        if (LocalDate.of(getAno(), getMes(), 1).isAfter(LocalDate.now())){
+            cadena = "cod: "+codigo+" descripcion: "+descripcion;
         }
-    }
+        return cadena;
+    }    
+
+
+   
     
     
 }

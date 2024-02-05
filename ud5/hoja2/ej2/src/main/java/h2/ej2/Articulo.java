@@ -11,8 +11,8 @@ import java.time.LocalDate;
  * @author DAM122
  */
 public class Articulo {
-    protected static String codigo, descripcion;
-    protected static double precio;
+    protected String codigo, descripcion;
+    protected double precio;
 
     public Articulo(String codigo, String descripcion, double precio) {
         this.codigo = codigo;
@@ -32,14 +32,14 @@ public class Articulo {
         return precio;
     }
     
-    public void datos(){
-        System.out.println("cod: "+getCodigo()+
-                           " articulo: "+getDescripcion()+
-                           " precio: "+getPrecio());
+    public String datos(){
+        String aux ="cod: "+getCodigo()+" articulo: "+getDescripcion()+" precio: "+getPrecio();
+        return aux;
     }
     
-    public void caducados(){
-        
+    public String caducados(){
+        String aux="";
+        return aux;
     }
     
 }
