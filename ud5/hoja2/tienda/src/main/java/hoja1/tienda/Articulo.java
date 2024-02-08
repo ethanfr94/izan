@@ -23,30 +23,12 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return String.format("el articulo %s con el codigo %d tiene un precio de %,.2f" ,desc, cod, precio);
+        return String.format("el articulo %s con el codigo %d tiene un precio de %,.2f€ " ,desc, cod, precio);
     }
     
-   /* public static String EnPromocion(Articulo[] array){
-        String cadena ="\n\tArticulos en promocion\n";
-        for (int i = 0; i < array.length; i++){
-            if(array[i] instanceof EnPromocion){
-                cadena = cadena.concat("\n"+array.toString());
-            }
-        }
-        return cadena;
-    }
+   
     
-    /*public static String descuento (Articulo[] array){
-        String cadena ="\n\tArticulos caducados\n";
-        for (int i = 0; i < array.length; i++){
-            if(array[i] instanceof Perecederos){
-                if (array[i].getAnio() < LocalDate.now().getYear() || (array[i].getAnio() == LocalDate.now().getYear() && array[i].getMes() > LocalDate.now().getMonthValue())){
-                    cadena = cadena.concat("\n"+array.toString());
-                }
-            }
-        }
-        return cadena;
-    }*/
+    
     
     
     

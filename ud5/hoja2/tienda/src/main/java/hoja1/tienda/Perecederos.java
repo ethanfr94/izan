@@ -33,11 +33,22 @@ public class Perecederos extends Articulo{
     
     @Override
     public String toString() {
-        return super.toString().concat(String.format("caduca en %i / %i", mes, anio)); 
+        return super.toString().concat(String.format(" caduca en %d / %d", mes, anio)); 
         
     }
     
-    
+    public static String caducados (Articulo[] array){
+        String cadena ="\n\tArticulos caducados\n";
+        for (int i = 0; i < array.length; i++){
+            if(array[i] instanceof Perecederos per){// si el array[i] es del tipo indicado "Perecederos" crea el objeto "per" del tipo indicado "Perecederos"
+              //  Perecederos per = (Perecederos)array[i];
+                if (per.getAnio() < LocalDate.now().getYear() || (per.getAnio() == LocalDate.now().getYear() && per.getMes() > LocalDate.now().getMonthValue())){
+                    cadena = cadena.concat("\nel codigo del articulo es "+array[i].cod+" y la descripcion es "+array[i].desc);
+                }
+            }
+        }
+        return cadena;
+    }
     
     
     
