@@ -11,6 +11,18 @@ package h2.ej3;
 public class Ej3 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Circulo ci = new Circulo();
+        Cuadrado cu = new Cuadrado();
+        Rombo ro = new Rombo();
+        Triangulo tr = new Triangulo();
+        System.out.println("cambiamos el id de cada elemento");
+        ci.identidad();
+        cu.identidad();
+        ro.identidad();
+        tr.identidad();
+        System.out.println(ci.toString());
+        System.out.println(cu.toString());
+        System.out.println(ro.toString());
+        System.out.println(tr.toString());
     }
 }

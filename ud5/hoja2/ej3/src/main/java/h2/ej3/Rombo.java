@@ -12,9 +12,13 @@ public class Rombo extends Forma {
 
     @Override
     public String toString() {
-        return String.format("Rombo");
+        return String.format(id);
     }
     
-    
+     @Override
+    public void identidad() {
+        id = "rombo";
+       
+    }
     
 }

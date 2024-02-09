@@ -12,9 +12,14 @@ public class Triangulo extends Forma {
 
     @Override
     public String toString() {
-        return String.format("Triangulo");
+        return String.format(id);
     }
     
+     @Override
+    public void identidad() {
+        id = "triangulo";
+       
+    }
         
     
 }

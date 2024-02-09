@@ -9,7 +9,7 @@ package h2.ej3;
  * @author DAM122
  */
 public abstract class Forma {
-   String id;
+    protected String id;
     @Override
     public abstract String toString();    
     public void identidad(){

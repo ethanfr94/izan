@@ -31,7 +31,8 @@ public class Tienda {
         }
         
         System.out.println(Perecederos.caducados(art));
-        System.out.println("");
+        System.out.println("");                
         System.out.println(EnPromocion.maxdescuento(art));
+        System.out.println("hola");
     }
 }

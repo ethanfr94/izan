@@ -12,9 +12,13 @@ public class Cuadrado extends Forma {
 
     @Override
     public String toString() {
-        return String.format("Cuadrado");
+        return String.format(id);
     }
     
-    
+     @Override
+    public void identidad() {
+        id = "cuadrado";
+       
+    }
     
 }
