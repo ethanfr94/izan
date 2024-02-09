@@ -10,9 +10,16 @@ package h2.ej3;
  */
 public class Triangulo extends Forma {
 
+     @Override
+    public String identidad() {
+        super.identidad(); 
+        id = "Triangulo";
+        return id;
+    }
+    
     @Override
     public String toString() {
-        return String.format("Triangulo");
+        return String.format(id);
     }
     
         

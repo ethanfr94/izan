@@ -16,9 +16,9 @@ public class Circulo extends Forma {
     }
 
     @Override
-    public void identidad() {
+    public String identidad() {
         id = "circulo";
-       
+       return id;
     }
     
     

@@ -8,13 +8,18 @@ package h2.ej3;
  *
  * @author DAM122
  */
-public class Rombo extends Forma {
+public class Rombo extends Forma {    
 
     @Override
-    public String toString() {
-        return String.format("Rombo");
+    public String identidad() {
+        super.identidad(); 
+        id = "Rombo";
+        return id;
     }
     
-    
+    @Override
+    public String toString() {
+        return String.format(id);
+    }
     
 }
