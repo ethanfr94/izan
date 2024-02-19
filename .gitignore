@@ -1,63 +1,18 @@
-/unidad4/hoja6/ejercicio2/target/
-/unidad4/hoja7/ejercicio1/target/
-/unidad4/hoja8/ejercicio1/target/
-/unidad4/fechas/ejercicio2/target/
-/unidad4/main/ejercicio1/target/
-/unidad4/main/ejercicio2/target/
-/unidad4/main/Persona/target/
-/unidad4/main/ejercicio3/target/
-/Operaciones/target/
-/ud1/hoja1/ejercicio1/target/
-/ud1/hoja1/ejercicio3/target/
-/ud1/hoja1/ejercicio4/target/
-/ud1/hoja1/ejercicio5/target/
-/ud1/hoja2/ejercicio1/target/
-/ud1/hoja2/ejercicio2/target/
-/ud1/hoja2/ejercicio3/target/
-/ud1/hoja2/ejercicio4/target/
-/ud1/hoja2/ejercicio5/target/
-/ud1/hoja2/ejercicio6/target/
-/ud1/hoja2/ejercicio7/target/
-/ud2/Soluciones/HOJA 1/Ejercicio1/target/
-/ud2/Soluciones/HOJA 1Strings/Ejercicio1/target/
-/ud2/Soluciones/HOJA 1Strings/Ejercicio2/target/
-/ud2/Soluciones/HOJA 1Strings/Ejercicio3/target/
-/ud2/Soluciones/HOJA 1Strings/Ejercicio4/target/
-/ud2/Soluciones/HOJA 1Strings/Ejercicio5/target/
-/ud2/Soluciones/HOJA 2/Ejercicio1/target/
-/ud2/Soluciones/HOJA 3/Ejercicio1/target/
-/ud2/Soluciones/HOJA 3/Ejercicio2/target/
-/ud2/Soluciones/HOJA 3/Ejercicio3/target/
-/ud2/Soluciones/HOJA 4/Ejercicio1/target/
-/ud2/Soluciones/HOJA 4/Ejercicio2/target/
-/ud2/Soluciones/HOJA 4/Ejercicio3/target/
-/ud2/Soluciones/HOJA 5/Ejercicio1/target/
-/ud4/Hoja1/ejercicio2/target/
-/ud4/Hoja1/ejercicio3/target/
-/ud4/Hoja1/ejercicio4/target/
-/ud4/Hoja1/ejercicio5/target/
-/ud4/Hoja1/ejercicio6/target/
-/ud4/Hoja1/ejercicio7/target/
-/ud4/fechas/ejercicio1/target/
-/ud4/fechas/ejercicio2/target/
-/ud4/hoja2/ejercicio1/target/
-/ud4/hoja2/ejercicio2/target/
-/ud4/hoja2/ejercicio3/target/
-/ud4/hoja2/ejercicio4/target/
-/ud4/hoja3/ejercicio1/target/
-/ud4/hoja3/ejercicio2/target/
-/ud4/hoja3/ejercicio3/target/
-/ud4/hoja3/ejercicio4/target/
-/ud4/hoja4/ejercicio1/target/
-/ud4/hoja4/ejercicio2/target/
-/ud4/hoja5/ejercicio1/target/
-/ud4/hoja5/ejercicio2/target/
-/ud4/hoja5/ejercicio3/target/
-/ud4/hoja6/ejercicio2/target/
-/ud4/hoja7/ejercicio1/target/
-/ud4/hoja8/ejercicio1/target/
-/ud4/main/Persona/target/
-/ud4/main/ejercicio1/target/
-/ud4/main/ejercicio3/target/
-/ud5/hoja2/ej3/target/
-/ud5/hoja2/tienda/target/
+# Compiled class file
+*.class
+# Log file
+*.log
+# BlueJ files
+*.ctxt
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*

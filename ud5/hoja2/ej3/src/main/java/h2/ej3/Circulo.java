@@ -12,15 +12,11 @@ public class Circulo extends Forma {
 
     @Override
     public String toString() {
-        return String.format(id);
+        return String.format("el identificador de esta forma es: ",id);
     }
 
     @Override
     public void identidad() {
-        id = "circulo";
-       
-    }
-    
-    
-    
+        id = "circulo";       
+    }        
 }

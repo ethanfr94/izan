@@ -15,6 +15,7 @@ public class Ej3 {
         Cuadrado cu = new Cuadrado();
         Rombo ro = new Rombo();
         Triangulo tr = new Triangulo();
+
         System.out.println("cambiamos el id de cada elemento");
         ci.identidad();
         cu.identidad();
