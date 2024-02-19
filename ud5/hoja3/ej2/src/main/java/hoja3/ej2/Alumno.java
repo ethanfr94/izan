@@ -9,8 +9,10 @@ package hoja3.ej2;
  * @author usuario
  */
 public class Alumno extends Persona {
+   
     private int [] notas;
     private double media;
+   
     public Alumno(int notas) {
         int suma = 0;
         

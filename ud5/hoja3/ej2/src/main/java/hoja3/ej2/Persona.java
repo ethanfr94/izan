@@ -4,6 +4,8 @@
  */
 package hoja3.ej2;
 
+import java.util.Scanner;
+
 /**
  *
  * @author usuario
@@ -12,6 +14,16 @@ public abstract class Persona {
     
     private String dni, nombre, direccion;
 
+    public Persona(){
+        Scanner t;
+        System.out.println("introduce un dni");
+        dni = new Scanner(System.in).nextLine();
+        System.out.println("introduce un nombre");
+        nombre = new Scanner(System.in).nextLine();
+        System.out.println("introduce una direccion");
+        direccion = new Scanner(System.in).nextLine();
+    }
+    
     public String getDni() {
         return dni;
     }
