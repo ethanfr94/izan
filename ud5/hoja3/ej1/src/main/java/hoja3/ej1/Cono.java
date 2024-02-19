@@ -16,8 +16,8 @@ public class Cono extends Figura {
 
     @Override
     public double area() {
-        double g = Math.sqrt(Math.pow(h, 2)+Math.pow(r, 2));
-        double area = Math.PI*r*(r+g);
+        double g = Math.sqrt(Math.pow(super.h, 2)+Math.pow(super.r, 2));
+        double area = Math.PI*super.r*(super.r+g);
         
         return area;
     }
@@ -25,7 +25,7 @@ public class Cono extends Figura {
     @Override
     public double volumen() {
     
-        double volumen = (Math.PI*Math.pow(r, 2)*h)/3;
+        double volumen = (Math.PI*Math.pow(super.r, 2)*super.h)/3;
         
         return volumen;    
     }
