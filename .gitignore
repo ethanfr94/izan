@@ -16,3 +16,6 @@
 *.rar
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/ud5/hoja3/ej1/target/
+/ud5/hoja5/ej1/target/
+/ud5/hoja5/ej2/target/
