@@ -39,7 +39,7 @@ public class Libro extends Publicacion {
         for (int i = 0; i < lista.length; i++) {
             if (lista[i] instanceof Libro) {
                 aux = (Libro) lista[i];
-                if (aux.getFecha().getYear() == LocalDate.now().getYear() && aux.getFecha().getMonthValue() == LocalDate.now().getMonthValue()) {
+                if (aux.fecha.getYear() == LocalDate.now().getYear() && aux.fecha.getMonthValue() == LocalDate.now().getMonthValue()) {
                     if (aux.paginas > 1000) {
                         System.out.println(aux.toString());
                     }                    

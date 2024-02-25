@@ -58,7 +58,7 @@ public class Disco extends Publicacion {
         System.out.println("\nLos discos editados en los dos ultimos años son:");
         for (int i = 0; i < lista.length; i++) {
             if (lista[i] instanceof Disco) {
-                if (aux.getFecha().getYear()> (LocalDate.now().getYear()-2) && aux.getFecha().getYear()< (LocalDate.now().getYear())) {
+                if (aux.fecha.getYear()> (LocalDate.now().getYear()-2) && aux.fecha.getYear()< (LocalDate.now().getYear())) {
                     System.out.println(aux.toString());
                 }
             }
