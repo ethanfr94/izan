@@ -11,6 +11,6 @@ package ed.reefuerzo;
 public class Reefuerzo {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Object casa = "hola";
     }
 }

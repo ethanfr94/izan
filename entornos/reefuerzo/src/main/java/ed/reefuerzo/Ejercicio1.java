@@ -9,6 +9,7 @@ package ed.reefuerzo;
  * @author usuario
  */
 public class Ejercicio1 {
+    Object casa = "hola";
     public int sumar(int a, int b) {
 return a + b;
 }
