@@ -35,8 +35,8 @@ public class Disco extends Publicacion {
     }
     
       public static Disco masLargo(Publicacion[] lista) {
-        Disco max = new Disco("","",1,1,0,0),
-              aux = new Disco("","",0,0,0,0);
+        Disco max = new Disco("","",0,0,0,0),
+              aux;
         System.out.println("\nEl disco más largo es: ");
         for (int i = 0; i < lista.length; i++) {
             if (lista[i] instanceof Disco) {

@@ -34,7 +34,7 @@ public class Libro extends Publicacion {
     }
     
      public static void libroLargo(Publicacion[] lista) {
-        Libro aux = new Libro("","",0,0,0,0);
+        Libro aux;
         System.out.println("\nLos libros editados este mes con más de 1000 paginas son: ");
         for (int i = 0; i < lista.length; i++) {
             if (lista[i] instanceof Libro) {
