@@ -11,6 +11,9 @@ package hoja3.ej2;
 public class Ej2 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+       Alumno a = new Alumno(3);
+       Profesor p = new Profesor (3);
+        System.out.println(a.mostrar());
+        System.out.println(p.mostrar());
     }
 }
