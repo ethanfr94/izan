@@ -18,6 +18,44 @@ public class Contacto {
         this.movil = movil;
         this.mail = mail;
     }
+
+    @Override
+    public String toString() {
+        return "Contacto{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", movil=" + movil + ", mail=" + mail + '}';
+    }
+    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getMovil() {
+        return movil;
+    }
+
+    public void setMovil(String movil) {
+        this.movil = movil;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
     
     
     
