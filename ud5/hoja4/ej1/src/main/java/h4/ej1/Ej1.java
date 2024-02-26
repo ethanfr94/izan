@@ -23,7 +23,7 @@ public class Ej1 {
             System.out.println(p1.toString());
         }
 
-        Disco.cortaNombre(Disco.masLargo(p));
+        System.out.println(Disco.cortaNombre(Disco.masLargo(p)));
 
         Libro.libroLargo(p);
         

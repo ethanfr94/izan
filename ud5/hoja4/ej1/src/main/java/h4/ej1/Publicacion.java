@@ -13,24 +13,25 @@ import java.util.Scanner;
  */
 public abstract class Publicacion {
     
-    protected String getTitulo, autor;
+    protected String titulo, autor;
     protected LocalDate fecha;
 
     public Publicacion(String titulo, String autor, int dia, int mes, int ano) {
-        this.getTitulo = titulo;
+        this.titulo = titulo;
         this.autor = autor;
         this.fecha = LocalDate.of(ano, mes, dia);
     }
+    
     
     @Override
     public abstract String toString();
 
     public String getTitulo() {
-        return getTitulo;
+        return titulo;
     }
 
     public void setTitulo(String titulo) {
-        this.getTitulo = titulo;
+        this.titulo = titulo;
     }
 
     public String getAutor() {
@@ -69,13 +70,11 @@ public abstract class Publicacion {
         int ano = t.nextInt();
         if (n==1) {
             System.out.println("Duracion del disco");
-            t = new Scanner(System.in);
-            int duracion = t.nextInt();
+            int duracion = new Scanner(System.in).nextInt();
             p = new Disco(titulo, autor, duracion, dia, mes, ano);
         } else if (n == 2) {
             System.out.println("Paginas del libro");
-            t = new Scanner(System.in);
-            int paginas = t.nextInt();
+            int paginas = new Scanner(System.in).nextInt();
             p = new Libro(titulo, autor, paginas, dia, mes, ano);
         }
         return p;

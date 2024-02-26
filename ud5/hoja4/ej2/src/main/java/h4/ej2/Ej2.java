@@ -17,17 +17,16 @@ public class Ej2 {
         Empleado e3 = new Programador("Santi", "IT", 37, false, 185.15, 3170, "Java");
         Empleado e4 = new Programador("Link", "IT", 35, true, 185.15, 170, "Java");
         
-        
-        
         p1.insertar(e1);
         p1.insertar(e2);
         p1.insertar(e3);
         p1.insertar(e4);
+        
         p1.todosEmpleados();
         System.out.println(p1.maxLineas());
         System.out.println("");
         System.out.println(p1.senior());
-        System.out.println("");
+        System.out.println("aumentamos sueldo");
         p1.aumento();
         p1.todosEmpleados();              
     }

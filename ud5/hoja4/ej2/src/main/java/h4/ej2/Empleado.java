@@ -24,7 +24,7 @@ public class Empleado {
         this.salario = salario;
     }
 
-    public Empleado() {
+    /*public Empleado() {
         Scanner t;
         System.out.println("introduce nombre");
         nombre = new Scanner(System.in).nextLine();
@@ -36,7 +36,7 @@ public class Empleado {
         casado = new Scanner(System.in).nextBoolean();
         System.out.println("introduce salario");
         salario = new Scanner(System.in).nextDouble();
-    }
+    }*/
 
     public Categoria categoria(){
         Categoria ct;

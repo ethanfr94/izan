@@ -21,14 +21,14 @@ public class Programador extends Empleado {
         this.lenguaje = lenguaje;
     }
 
-    public Programador() {
+    /*public Programador() {
         super();
         Scanner t;        
         System.out.println("introduce lineas de codigo por hora");
         codH = new Scanner(System.in).nextInt();
         System.out.println("introduce lenguaje dominante");
         lenguaje = new Scanner(System.in).nextLine();
-    }
+    }*/
 
     public String getLenguaje() {
         return lenguaje;
