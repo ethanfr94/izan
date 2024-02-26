@@ -34,14 +34,16 @@ public class Libro extends Publicacion {
     }
     
      public static void libroLargo(Publicacion[] lista) {
-       
+       Libro aux;
         System.out.println("\nLos libros editados este mes con más de 1000 paginas son: ");
         for (int i = 0; i < lista.length; i++) {
-            if (lista[i] instanceof Libro aux) {
-                aux = (Libro) lista[i];
-                if (aux.fecha.getYear() == LocalDate.now().getYear() && aux.fecha.getMonthValue() == LocalDate.now().getMonthValue() && aux.paginas > 1000) {
+           
+            if (lista[i] instanceof Libro) {
+                 aux = (Libro) lista[i];
+                if (aux.fecha.getYear() == LocalDate.now().getYear() && aux.fecha.getMonthValue() == LocalDate.now().getMonthValue()) {
+                   
                     if (aux.paginas > 1000) {
-                        System.out.println(aux.toString());
+                        System.out.println(aux.titulo);
                     }                    
                 }
             }

@@ -35,12 +35,16 @@ public class Disco extends Publicacion {
     }
     
       public static Disco masLargo(Publicacion[] lista) {
-       Disco max = null;
+       Disco max = null, aux = null;
             
         System.out.println("\nEl disco más largo es: ");
+       
         for (int i = 0; i < lista.length; i++) {
-            if (lista[i] instanceof Disco aux) {
+            if (lista[i] instanceof Disco) {
                 aux = (Disco) lista[i];
+                if(max == null){
+                    max = aux;
+                }
                 if (aux.duracion > max.duracion) {
                     max = aux ;
                 }
@@ -56,9 +60,11 @@ public class Disco extends Publicacion {
     public static void ultimosDosAnos(Publicacion[] lista) {
         System.out.println("\nLos discos editados en los dos ultimos años son:");
         for (int i = 0; i < lista.length; i++) {
-            if (lista[i] instanceof Disco aux) {
-                aux = (Disco) lista[i];
-                if (aux.fecha.getYear()> (LocalDate.now().getYear()-2) && aux.fecha.getYear()< (LocalDate.now().getYear())) {
+            if (lista[i] instanceof Disco) {
+                Disco aux = (Disco) lista[i];
+                System.out.println(aux.getFecha().getYear());
+                System.out.println(LocalDate.now().getYear()-2);
+                if (aux.getFecha().getYear()> (LocalDate.now().getYear()-2) && aux.getFecha().getYear()< (LocalDate.now().getYear())) {
                     System.out.println(aux.autor+" "+aux.titulo);
                 }
             }
