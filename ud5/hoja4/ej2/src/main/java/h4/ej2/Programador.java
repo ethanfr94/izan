@@ -21,14 +21,14 @@ public class Programador extends Empleado {
         this.lenguaje = lenguaje;
     }
 
-    /*public Programador() {
+    public Programador() {
         super();
         Scanner t;        
         System.out.println("introduce lineas de codigo por hora");
         codH = new Scanner(System.in).nextInt();
         System.out.println("introduce lenguaje dominante");
         lenguaje = new Scanner(System.in).nextLine();
-    }*/
+    }
 
     public String getLenguaje() {
         return lenguaje;
@@ -47,7 +47,7 @@ public class Programador extends Empleado {
 
     @Override
     public String datos() {
-       return super.datos().concat(String.format("lineas de cofigo por hora: %d \nlenguaje dominante: %s\n",codH, lenguaje));
+       return super.datos().concat(String.format("cod/h: %d \nlenguaje dominante: %s\n",codH, lenguaje));
         
     }
 

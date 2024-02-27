@@ -8,9 +8,9 @@ package h4.ej2;
  *
  * @author usuario
  */
-public class Plantilla extends Empleado {
+public class Plantilla {
 
-    Empleado[] emp;
+     private Empleado[] emp;
     private int cont = 0;
 
     public Plantilla() {

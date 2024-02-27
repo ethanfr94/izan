@@ -24,7 +24,7 @@ public class Empleado {
         this.salario = salario;
     }
 
-    /*public Empleado() {
+    public Empleado() {
         Scanner t;
         System.out.println("introduce nombre");
         nombre = new Scanner(System.in).nextLine();
@@ -36,7 +36,7 @@ public class Empleado {
         casado = new Scanner(System.in).nextBoolean();
         System.out.println("introduce salario");
         salario = new Scanner(System.in).nextDouble();
-    }*/
+    }
 
     public Categoria categoria(){
         Categoria ct;
@@ -59,11 +59,11 @@ public class Empleado {
             aux = "casado";
         }else {aux = "soltero";}            
         
-       return String.format("%s\ndepartamento de %s\nedad: %d \nestado civil: %s \nsalario: %,.2f\n",nombre, departamento, edad, aux, salario);
+       return String.format("%s / dept %s / %d años / %s / sueldo: %,.2f€\n",nombre, departamento, edad, aux, salario);
     }
     
     public void aumentoSalario(int incremento){//tanto porciento
-        salario = salario + (salario * (incremento/100));
+        salario += salario * (incremento/100);
     }
 
     
