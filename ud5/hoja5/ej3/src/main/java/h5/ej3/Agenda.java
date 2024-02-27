@@ -20,9 +20,12 @@ public class Agenda {
         cont = 0;
     }
     
-    public void insertar(){
+    public void insertar(Contacto contacto){
+        
         if (cont < contactos.length){
-            contactos[cont++] = new Contacto("nombre", "apellido", "movil", "mail");
+            contactos[cont] = contacto;
+            System.out.println("contacto introducido");
+            cont++;
         }
         else {
             System.out.println("la agenda esta llena");        
@@ -30,27 +33,34 @@ public class Agenda {
     }
     
     public void buscar (String nombre){
-        for (int i = 0; i < cont; i++) {
-            if (contactos[i].nombre.equals(nombre)) {
-                System.out.println(contactos[i].nombre+" / "+contactos[i].movil+" / "+contactos[i].mail);
+        boolean encontrado = false;
+        for (int i = 0; i < cont && encontrado == false; i++) {
+            if (contactos[i].getNombre().equals(nombre)) {
+                System.out.println("posicion: "+(i+1)+" / "+contactos[i].getNombre());
+                encontrado = true;
             }
         }
+        if(!encontrado){
+                System.out.println("contacto no encontrado");
+            }
     }
     
     public void eliminar (String nombre){
-        int aux;
-        for (int i = 0; i < cont; i++) {
-            if (contactos[i].nombre.equals(nombre)) {
-                aux = i;            
-                for (int j = aux; j < cont; i++) {        
-                    contactos[j].setNombre(contactos[j+1].getNombre());
-                    contactos[j].setApellidos(contactos[j+1].getApellidos());
-                    contactos[j].setMail(contactos[j+1].getMail());
-                    contactos[j].setMovil(contactos[j+1].getMovil());
-            }
+        boolean borrado = false;        
+        for (int i = 0; i < cont && borrado == false; i++) {
+            if (contactos[i].getNombre().equals(nombre)) {                            
+                for (int j = i; j < cont-1; j++) {        
+                    contactos[j] = contactos[j+1];
+                }                
                 cont--;
-            }
+                borrado = true;
+                System.out.println("contacto borrado"); 
+            }            
         }
+        if (borrado == false){
+            System.out.println("contacto no encontrado");
+        }
+        
     }
 
     @Override
@@ -63,7 +73,7 @@ public class Agenda {
     }
     
     public void ordenar(){
-        Arrays.sort(contactos);
+        Arrays.sort(contactos, 0, cont);
     }
     
     

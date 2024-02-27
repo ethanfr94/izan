@@ -8,9 +8,9 @@ package h5.ej3;
  *
  * @author DAM122
  */
-public class Contacto {
+public class Contacto implements Comparable<Contacto> {
     
-    protected String nombre, apellidos, movil, mail;
+    private String nombre, apellidos, movil, mail;
 
     public Contacto(String nombre, String apellidos, String movil, String mail) {
         this.nombre = nombre;
@@ -29,33 +29,12 @@ public class Contacto {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    @Override
+    public int compareTo(Contacto o) {
+        return getNombre().compareToIgnoreCase(o.getNombre());
     }
 
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getMovil() {
-        return movil;
-    }
-
-    public void setMovil(String movil) {
-        this.movil = movil;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
+    
     
     
     
