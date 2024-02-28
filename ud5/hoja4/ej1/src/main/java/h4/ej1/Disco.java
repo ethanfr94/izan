@@ -58,14 +58,13 @@ public class Disco extends Publicacion {
     }
     
     public static void ultimosDosAnos(Publicacion[] lista) {
+        Disco aux;
         System.out.println("\nLos discos editados en los dos ultimos años son:");
         for (int i = 0; i < lista.length; i++) {
             if (lista[i] instanceof Disco) {
-                Disco aux = (Disco) lista[i];
-                System.out.println(aux.getFecha().getYear());
-                System.out.println(LocalDate.now().getYear()-2);
+                aux = (Disco) lista[i];                
                 if (aux.getFecha().getYear()> (LocalDate.now().getYear()-2) && aux.getFecha().getYear()< (LocalDate.now().getYear())) {
-                    System.out.println(aux.autor+" "+aux.titulo);
+                    System.out.println(aux.getAutor()+" "+aux.getTitulo());
                 }
             }
         }
