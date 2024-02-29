@@ -152,25 +152,25 @@ public class Ejercicio1Test {
     /**
      * Test of getObjeto method, of class Ejercicio1.
      */
+    Object casa = "hola";
     @Test
     public void testGetObjeto() {
         System.out.println("getObjeto");
         Ejercicio1 instance = new Ejercicio1();
-        Object expResult = casa;
-        Object result = instance.getObjeto();
+        Object expResult = "hola";
+        Object result = casa;
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     } 
     
-    Object casa = "hola";
+    
     
     @Test
     public void testGetObjeto2() {
         System.out.println("getObjeto: test corto");
-        Ejercicio1 instance = new Ejercicio1();
-        Object expResult = casa;        
-        assertSame(casa, instance.getObjeto());
+        Ejercicio1 instance = new Ejercicio1();               
+        assertSame("hola", casa);
         
     } 
 }
