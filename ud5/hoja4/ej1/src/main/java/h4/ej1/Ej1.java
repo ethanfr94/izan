@@ -15,17 +15,17 @@ public class Ej1 {
         Publicacion[] p = new Publicacion[2];
         
         p[0] = Publicacion.crear(1);
-        //p[1] = Publicacion.crear(2);
+        p[1] = Publicacion.crear(2);
         
         
 
-        /*for (Publicacion p1 : p) {
+        for (Publicacion p1 : p) {
             System.out.println(p1.toString());
         }
 
         System.out.println(Disco.cortaNombre(Disco.masLargo(p)));
 
-        Libro.libroLargo(p);*/
+        Libro.libroLargo(p);
         
         Disco.ultimosDosAnos(p);
         
