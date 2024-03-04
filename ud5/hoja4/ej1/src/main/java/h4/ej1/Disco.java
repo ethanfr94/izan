@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class Disco extends Publicacion {
     private int duracion;
-
+    //conn super llamamos al constructor de la clase padre  y luego añadimos la inicializacion de las variables de la actual clase
     public Disco(String titulo, String autor, int duracion, int dia, int mes, int ano) {
         super(titulo, autor, dia, mes, ano);
         this.duracion = duracion;
@@ -27,21 +27,21 @@ public class Disco extends Publicacion {
         this.duracion = duracion;
     }
     
-    
+    //sobreescribimos el metodo tostring
     @Override
     public String toString() {
+        //damos formato a como mostrar la fecha
         DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy");
-        return String.format("el disco %s de %s, con una duracion de %d minutos, fue publicado el %s.", super.getTitulo(), super.getAutor(), duracion, super.getFecha().format(formato));
+        return String.format("el disco %s de %s, con una duracion de %d minutos, fue publicado el %s.", 
+                super.getTitulo(), super.getAutor(), duracion, super.getFecha().format(formato));
     }
-    
+    //creamos un metodo en el que introducimos un array por parametro
       public static Disco masLargo(Publicacion[] lista) {
-
        Disco max = null, aux = null;
-
-            
         System.out.println("\nEl disco más largo es: ");
-       
+       //revisamos cada posicion del array 
         for (int i = 0; i < lista.length; i++) {
+            //si el objeto de la posicion indicada es del tipo indicado realiza las acciones definidas mas tarde
             if (lista[i] instanceof Disco) {
                 aux = (Disco) lista[i];
                 if(max == null){

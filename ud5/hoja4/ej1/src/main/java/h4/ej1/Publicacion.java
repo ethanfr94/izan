@@ -11,18 +11,20 @@ import java.util.Scanner;
  *
  * @author usuario
  */
+//definimos clase abstracta
 public abstract class Publicacion {
-    
+    //definimos las variables
     protected String titulo, autor;
     protected LocalDate fecha;
-
+    //creamos un constructor por parametros
     public Publicacion(String titulo, String autor, int dia, int mes, int ano) {
         this.titulo = titulo;
         this.autor = autor;
+        //inicializamos la fecha con las parametros dados formateandolos con localdate
         this.fecha = LocalDate.of(ano, mes, dia);
     }
     
-    
+    //definimos metodo abstracto
     @Override
     public abstract String toString();
 
@@ -49,7 +51,8 @@ public abstract class Publicacion {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-    
+    //hacemos un metodo para rellenar el constructor los valores del constructor
+    //con el parametro elegimos el tipo de publicacion
     public static Publicacion crear(int n) {
         Publicacion p = null;
         Scanner t;
@@ -68,6 +71,7 @@ public abstract class Publicacion {
         System.out.println("Año de publicacion");
         t = new Scanner(System.in);
         int ano = t.nextInt();
+        //en funcion del tipo de publicacion rellenamos unos datos del constructor
         if (n==1) {
             System.out.println("Duracion del disco");
             int duracion = new Scanner(System.in).nextInt();
