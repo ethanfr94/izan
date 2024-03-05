@@ -17,7 +17,8 @@ public class Plantilla {
         emp = new Empleado[50];
         cont = 0;
     }
-
+    //instertar un nuevo objeto a un array 
+    //comprobando que este no esta completo
     public void insertar(Empleado e) {
         if (cont < emp.length) {
             emp[cont++] = e;
@@ -56,8 +57,11 @@ public class Plantilla {
     public void aumento() {
         for (int i = 0; i < cont; i++) {
             Programador aux = (Programador) emp[i];
-            if (emp[i] instanceof Programador && emp[i].categoria() == Categoria.INTERMEDIO && aux.getLenguaje().toLowerCase().contains("java")) {
-                emp[i].aumentoSalario(20);
+            if (emp[i] instanceof Programador){
+                if (emp[i].categoria() == Categoria.INTERMEDIO && 
+                    aux.getLenguaje().toLowerCase().contains("java")) {
+                        emp[i].aumentoSalario(20);
+                }
             }
         }
     }
