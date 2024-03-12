@@ -1,0 +1,53 @@
+From 0ad6996934ad14d91f43ce432dca6b4cf2c6c0f1 Mon Sep 17 00:00:00 2001
+From: ethanfr94 <izan.frrancoanduaga@iesmiguelherrero.com>
+Date: 28 feb 2024, 11:46:12
+
+
+
+diff --git a/ud5/hoja4/ej1/src/main/java/h4/ej1/Disco.java b/ud5/hoja4/ej1/src/main/java/h4/ej1/Disco.java
+index 9c1c5f8..54f53bb 100644
+--- a/ud5/hoja4/ej1/src/main/java/h4/ej1/Disco.java
++++ b/ud5/hoja4/ej1/src/main/java/h4/ej1/Disco.java
+@@ -58,14 +58,13 @@
+     }
+     
+     public static void ultimosDosAnos(Publicacion[] lista) {
++        Disco aux;
+         System.out.println("\nLos discos editados en los dos ultimos años son:");
+         for (int i = 0; i < lista.length; i++) {
+             if (lista[i] instanceof Disco) {
+-                Disco aux = (Disco) lista[i];
+-                System.out.println(aux.getFecha().getYear());
+-                System.out.println(LocalDate.now().getYear()-2);
++                aux = (Disco) lista[i];                
+                 if (aux.getFecha().getYear()> (LocalDate.now().getYear()-2) && aux.getFecha().getYear()< (LocalDate.now().getYear())) {
+-                    System.out.println(aux.autor+" "+aux.titulo);
++                    System.out.println(aux.getAutor()+" "+aux.getTitulo());
+                 }
+             }
+         }
+diff --git a/ud5/hoja4/ej1/src/main/java/h4/ej1/Ej1.java b/ud5/hoja4/ej1/src/main/java/h4/ej1/Ej1.java
+index d02bb3f..6348974 100644
+--- a/ud5/hoja4/ej1/src/main/java/h4/ej1/Ej1.java
++++ b/ud5/hoja4/ej1/src/main/java/h4/ej1/Ej1.java
+@@ -15,17 +15,17 @@
+         Publicacion[] p = new Publicacion[2];
+         
+         p[0] = Publicacion.crear(1);
+-        p[1] = Publicacion.crear(2);
++        //p[1] = Publicacion.crear(2);
+         
+         
+ 
+-        for (Publicacion p1 : p) {
++        /*for (Publicacion p1 : p) {
+             System.out.println(p1.toString());
+         }
+ 
+         System.out.println(Disco.cortaNombre(Disco.masLargo(p)));
+ 
+-        Libro.libroLargo(p);
++        Libro.libroLargo(p);*/
+         
+         Disco.ultimosDosAnos(p);
+         
