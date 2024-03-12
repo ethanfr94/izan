@@ -19,24 +19,33 @@ public class Contenedor <T> {
     }
 
     public void insertarAlPrincipio(T nuevo){
+        if (objeto[0] != null){
         //copiamos el array dandole una posicion mas de longitud
         objeto = Arrays.copyOf(objeto, objeto.length+1);
         //copiamos el array pero desplazandole una posicion a la derecha
         System.arraycopy(objeto , 0 ,objeto, 1, objeto.length-1);
         //rellenamos la posicion que hemos dejado vacia al principio con el valor pasado por parametro
         objeto[0] = nuevo;
+        }
+        else{
+            objeto[0] = nuevo;
+        }
     }
     
     public void insertarAlFinal(T nuevo){
         //copiamos el array dandole una posicion mas de longitud
         objeto = Arrays.copyOf(objeto, objeto.length+1);
+        //en la ultima posicion insertamos el valor pasado por parametro
         objeto[objeto.length] = nuevo;
     }
     
     public T extraerDelPrincipio(){
         T n;
+        // creamos una variable en la que almacenamos la primera posicion del array
         n = objeto [0];
-        System.arraycopy(objeto , 1 ,objeto, 0, objeto.length);
+        //copiamos el array desde la segunda posicion pero pero pegandolo en la anterior y eliminamos la ultima posicion
+        System.arraycopy(objeto , 1 ,objeto, 0, objeto.length-1);
+        objeto = Arrays.copyOf(objeto, objeto.length-1);
         return n;
     }
     
@@ -45,8 +54,8 @@ public class Contenedor <T> {
     }       
     
     @Override
-    public String toString() {
-        return "Contenedor{" + '}';
+    public String toString() {        
+        return Arrays.deepToString(objeto);
     }
     
     
