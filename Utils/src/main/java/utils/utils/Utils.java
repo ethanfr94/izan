@@ -45,7 +45,7 @@ public class Utils {
         do {
             try {
                 System.out.println(msg);
-                tamanio = t.nextFloat();
+                tamanio = Float.parseFloat(t.nextLine());
                 if (tamanio < 0 && tipo == 1) {// con este if condicionamos a que el numero sea positivo
                     throw new Excepcion("el numero debe ser positivo");
                 }
@@ -66,7 +66,7 @@ public class Utils {
         do {
             try {
                 System.out.println(msg);
-                x = t.nextInt();
+                x = Integer.parseInt(t.nextLine());
                 valido = true;
 
             } catch (InputMismatchException e) {
@@ -86,7 +86,7 @@ boolean valido = false;
 do {
 try {
 System.out.println(msg);
-tamanio = t.nextInt();
+tamanio = Integer.parseInt(t.nextLine());
 if(tamanio < 0 && tipo == 1){// con este if condicionamos a que el numero sea positivo
 throw new Excepcion("el numero debe ser positivo");
 }
@@ -201,14 +201,14 @@ return tamanio;
     }
 
     public static String IntroTelefono(String c) {
-        String matricula = "";
+        String tlf = "";
         Scanner teclado = new Scanner(System.in);
         boolean correcto = false;
         do {
             try {
                 System.out.println(c);
-                matricula = teclado.nextLine();
-                if (matricula.matches("[0-9]{9}")) {
+                tlf = teclado.nextLine();
+                if (tlf.matches("[0-9]{9}")) {
                     correcto = true;
                 } else {
                     throw new Exception("Formato del telefono incorrecto");
@@ -218,7 +218,7 @@ return tamanio;
                 System.out.println(e.toString());
             }
         } while (!correcto);
-        return matricula;
+        return tlf;
     }
 
     public static String IntroMatricula(String c) {
