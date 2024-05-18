@@ -4,6 +4,8 @@
 
 package h1.ej2;
 
+import utils.utils.Utils;
+
 /**
  *
  * @author usuario
@@ -11,6 +13,14 @@ package h1.ej2;
 public class Ej2 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+       Academia ac = new Academia();
+       ac.aniadirAlFinal();
+       ac.aniadir(0);
+       ac.aniadir(0);
+       ac.mostrarCursos();
+       ac.borrar(Utils.introString("introduce codigo del curso a borrar"));
+       ac.mostrarCursos();
+       ac.modificarHoras(Utils.introString("introduce codigo del curso a modificar"));
+       ac.mostrarCursos();
     }
 }

@@ -67,6 +67,7 @@ public class Utils {
             try {
                 System.out.println(msg);
                 x = t.nextInt();
+                valido = true;
 
             } catch (InputMismatchException e) {
                 System.out.println("introduce un numero valido");
