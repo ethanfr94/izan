@@ -37,7 +37,7 @@ public class Utils {
         return cadena;
     }
 
-    public static float introFloat(String msg, int tipo) {
+    public static float introFloat(String msg) {
 //si en tipo introducimos un 1 el metodo solo validara numeros positivos
         Scanner t = new Scanner(System.in);
         float tamanio = 0;
@@ -45,25 +45,33 @@ public class Utils {
         do {
             try {
                 System.out.println(msg);
-                tamanio = Float.parseFloat(t.nextLine());
-                if (tamanio < 0 && tipo == 1) {// con este if condicionamos a que el numero sea positivo
-                    throw new Excepcion("el numero debe ser positivo");
-                }
+                tamanio = t.nextFloat();
+                
                 valido = true;
             } catch (InputMismatchException e) {
                 System.out.println("introduce un numero valido");
-            } catch (Excepcion e) {
-                e.getMessage();
-            }
+            } 
         } while (!valido);
         return tamanio;
     }
 
-    public static int introEntero(String msg) {
+    public static int introEntero(String msg){
+        Scanner t = new Scanner(System.in); 
+        int x = 0;        
+            try{
+                System.out.println(msg);
+                x = Integer.parseInt(t.nextLine());
+                return x;
+            }catch(InputMismatchException e) {
+                System.out.println("introduce un numero valido");
+            }  
+        return x;
+    }
+    
+    /*public static int introEntero(String msg) {
         Scanner t = new Scanner(System.in);
         int x = 0;
-        boolean valido = false;
-        do {
+        boolean valido = false;        
             try {
                 System.out.println(msg);
                 x = Integer.parseInt(t.nextLine());
@@ -71,10 +79,9 @@ public class Utils {
 
             } catch (InputMismatchException e) {
                 System.out.println("introduce un numero valido");
-            }
-        } while (!valido);
+            }        
         return x;
-    }
+    }*/
 
     /*public static int introEntero(String msg, int tipo) {
 //si en tipo introducimos un 1 el metodo solo validara numeros positivos
