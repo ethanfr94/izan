@@ -34,7 +34,6 @@ public class AgenciaAseguradora {
             Moto m = (Moto) v;
             agencia.add( m);
         }*/
-
     public void eliminar(String matricula) {
         int old = agencia.size();
         boolean correcto = false;
@@ -88,22 +87,24 @@ public class AgenciaAseguradora {
 
     public Coche masPotente() {
         Coche s = null;
-        int max = 0;
+      
+        boolean exito = false;
         Iterator<Vehiculo> it = agencia.iterator();
-        while (it.hasNext()) {
+        while (it.hasNext() && !exito) {
             Vehiculo v = it.next();
             if (v instanceof Coche) {
                 Coche c = (Coche) v;
-                if (c.getPotencia() > max) {
-                    max = c.getPotencia();
-                }
+                
+                    s = c;
+                    exito = true;
+               
             }
         }
         while (it.hasNext()) {
             Vehiculo v = it.next();
             if (v instanceof Coche) {
                 Coche c = (Coche) v;
-                if (max == c.getPotencia()) {
+                if (s.getPotencia() < c.getPotencia()) {
                     s = c;
                 }
             }
