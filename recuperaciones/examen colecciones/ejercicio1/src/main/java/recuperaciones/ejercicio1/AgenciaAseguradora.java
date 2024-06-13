@@ -51,6 +51,7 @@ public class AgenciaAseguradora {
         }        
         if (agencia.size() < old) {
             correcto = true;
+            Vehiculo.setnVehiculos(Vehiculo.getnVehiculos()-1);
         }
         return correcto;
     }

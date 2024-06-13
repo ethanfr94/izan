@@ -7,6 +7,7 @@ package recuperaciones.ejercicio1;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 
 /**
@@ -67,6 +68,16 @@ public abstract class Vehiculo implements Primable, Identificable, Comparable<Ve
             primaBase *= 0.65;                    
         }
         return primaBase;
+    }
+    
+    @Override
+    public LinkedHashMap<String, String> datosObjeto() {
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LinkedHashMap<String, String> p = new LinkedHashMap<>();     
+        p.put("Matricula: ", this.getMatricula());
+        p.put("Modelo", this.getModelo());
+        p.putAll(conductor.datosObjeto());
+        return p;
     }
 
     @Override

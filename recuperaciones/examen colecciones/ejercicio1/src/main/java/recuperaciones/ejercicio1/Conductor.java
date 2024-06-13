@@ -8,6 +8,7 @@ package recuperaciones.ejercicio1;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 /**
  *
@@ -50,6 +51,28 @@ public final class Conductor implements Identificable, Comparable<Conductor>{
     @Override
     public int compareTo(Conductor o) {        
         return this.fCarnet.compareTo(o.fCarnet);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.nombre);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Conductor other = (Conductor) obj;
+        return Objects.equals(this.nombre, other.nombre);
     }
     
     
