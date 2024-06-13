@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -115,7 +116,11 @@ public class Est {
     }
 
     public static String mostrarDatos(LinkedHashMap<String, String> mapa) {
-        return mapa.toString() + "\n";
+        String cdn = "";
+        for (Map.Entry<String , String> lista : mapa.entrySet()) {
+            cdn += lista.getKey()+" "+lista.getValue()+"\n";
+        }
+        return cdn;
     }
 
 }

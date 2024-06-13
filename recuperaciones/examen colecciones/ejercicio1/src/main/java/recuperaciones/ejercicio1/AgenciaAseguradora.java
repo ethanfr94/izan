@@ -25,38 +25,44 @@ public class AgenciaAseguradora {
     public boolean insertar(Vehiculo v) {
         return agencia.add(v);
     }
-        //no es necesario instanciar porque elimina el vehiculo
-        /*if (v instanceof Coche) {
+    //no es necesario instanciar porque elimina el vehiculo
+
+    /*if (v instanceof Coche) {
             Coche c = (Coche) v;
             agencia.add(c);
         } else if (v instanceof Moto) {
             Moto m = (Moto) v;
             agencia.add( m);
         }*/
-    
 
-    public boolean eliminar(String matricula) {
+    public void eliminar(String matricula) {
         int old = agencia.size();
         boolean correcto = false;
         Iterator<Vehiculo> it = agencia.iterator();
         while (it.hasNext()) {
             Vehiculo v = it.next();
             if (v.getMatricula().equals(matricula)) {
-                if(v instanceof Moto){
+                /*if(v instanceof Moto){
                     Moto m = (Moto) v;
                     agencia.remove(m);
                 }
                 if(v instanceof Coche){
                     Coche m = (Coche) v;
                     agencia.remove(m);
-                }                
+                } */
+                it.remove();
+                correcto = true;
             }
-        }        
-        if (agencia.size() < old) {
-            correcto = true;
-            Vehiculo.setnVehiculos(Vehiculo.getnVehiculos()-1);
         }
-        return correcto;
+        //if (agencia.size() < old) {
+
+        //Vehiculo.setnVehiculos(Vehiculo.getnVehiculos()-1);
+        //}
+        if (correcto) {
+            System.out.println("vehiculo eliminado");
+        } else {
+            System.out.println("error al eliminar vehiculo");
+        }
     }
 
     public String listarMotos(int prima) {
@@ -65,7 +71,7 @@ public class AgenciaAseguradora {
             if (v instanceof Moto) {
                 Moto m = (Moto) v;
                 if (m.calcularPrimaSeguro() > prima) {
-                    lista += m.datosObjeto() + "\n";
+                    lista += Est.mostrarDatos(m.datosObjeto());
                 }
             }
         }
@@ -86,20 +92,19 @@ public class AgenciaAseguradora {
         Iterator<Vehiculo> it = agencia.iterator();
         while (it.hasNext()) {
             if (it.next() instanceof Coche) {
-                Coche c = (Coche) it.next();
-                max = c.getPotencia();
+                Coche c = (Coche) it;
+                if (c.getPotencia() > max) {
+                    max = c.getPotencia();
+                }
             }
         }
         while (it.hasNext()) {
             if (it.next() instanceof Coche) {
-                Coche c = (Coche) it.next();
+                Coche c = (Coche) it;
                 if (max == c.getPotencia()) {
                     s = c;
                 }
             }
-        }
-        if (agencia.isEmpty()) {
-            s = null;
         }
         return s;
     }
