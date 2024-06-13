@@ -111,14 +111,11 @@ public class Est {
     }
 
     public static boolean validarMatricula(String matricula) throws Exception {
-        return matricula.toUpperCase().matches("\\d\\d\\d\\d\\s[^A,^E,^I,^O,^U,^Ñ,^[0-9]][^A,^E,^I,^O,^U,^Ñ,^[0-9]][^A,^E,^I,^O,^U,^Ñ,^[0-9]]");
+        return matricula.toUpperCase().matches(/*"[0-9]{4}[ ][BCDFGHJKLMNPQRSTVWXYZ]{3}*/"\\d\\d\\d\\d\\s[^A,^E,^I,^O,^U,^Ñ,^[0-9]][^A,^E,^I,^O,^U,^Ñ,^[0-9]][^A,^E,^I,^O,^U,^Ñ,^[0-9]]");
     }
 
     public static String mostrarDatos(LinkedHashMap<String, String> mapa) {
         return mapa.toString() + "\n";
     }
 
-    public static String mostrarDatos(TreeSet<LinkedHashMap<String, String>> mapa) {
-        return mapa.toString() + "\n";
-    }
 }

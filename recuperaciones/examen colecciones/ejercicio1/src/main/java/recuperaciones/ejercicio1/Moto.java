@@ -37,12 +37,8 @@ public class Moto extends Vehiculo{
 
     @Override
     public LinkedHashMap<String, String> datosObjeto() {
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LinkedHashMap<String,String> p=new LinkedHashMap<>();        
-        Conductor c=new Conductor(this.getConductor().getNombre(),this.getConductor().getfCarnet());
-        p.put("Matricula: ",this.getMatricula());
-        p.put("Modelo", this.getModelo());
-        p.put("Conductor",c.getNombre()+" "+c.getfCarnet().format(f));
+        p.putAll(super.datosObjeto());
         p.put("Cilindrada", String.valueOf(this.getCilindrada()));
         p.put("Prima", String.format("%,.2f €",calcularPrimaSeguro()));
         return p;

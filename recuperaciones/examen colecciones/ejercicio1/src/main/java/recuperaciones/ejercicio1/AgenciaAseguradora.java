@@ -16,28 +16,28 @@ import java.util.TreeSet;
  */
 public class AgenciaAseguradora {
 
-    TreeMap<String, Vehiculo> agencia;
+    TreeSet<Vehiculo> agencia;
 
     public AgenciaAseguradora() {
-        agencia = new TreeMap<>();
+        agencia = new TreeSet<>();
     }
 
     public void addVehiculo(String matricula, Vehiculo v) {
         if (v instanceof Coche) {
             Coche c = (Coche) v;
-            agencia.put(matricula, c);
+            agencia.add(c);
         } else if (v instanceof Moto) {
             Moto m = (Moto) v;
-            agencia.put(matricula, m);
+            agencia.add( m);
         }
     }
 
     public boolean eliminar(String matricula) {
         int old = agencia.size();
         boolean correcto = false;
-        Iterator<Map.Entry<String, Vehiculo>> it = agencia.entrySet().iterator();
+        Iterator<Vehiculo> it = agencia.iterator();
         while (it.hasNext()) {
-            Vehiculo v = it.next().getValue();
+            Vehiculo v = it.next();
             if (v.getMatricula().equals(matricula)) {
                 if(v instanceof Moto){
                     Moto m = (Moto) v;
@@ -58,7 +58,7 @@ public class AgenciaAseguradora {
 
     public String listarMotos(int prima) {
         String lista = "";
-        for (Vehiculo v : agencia.values()) {
+        for (Vehiculo v : agencia) {
             if (v instanceof Moto) {
                 Moto m = (Moto) v;
                 if (m.calcularPrimaSeguro() > prima) {
@@ -70,9 +70,9 @@ public class AgenciaAseguradora {
     }
 
     public TreeSet listarConductores() {
-        TreeSet<LinkedHashMap<String, String>> cond = new TreeSet<>();
-        for (Vehiculo v : agencia.values()) {
-            cond.add(v.getConductor().datosObjeto());
+        TreeSet<Conductor> cond = new TreeSet<>();
+        for (Vehiculo v : agencia) {
+            cond.add(v.getConductor());
         }
         return cond;
     }
@@ -80,7 +80,7 @@ public class AgenciaAseguradora {
     public Coche masPotente() {
         Coche s = null;
         int max = 0;
-        Iterator<Map.Entry<String, Vehiculo>> it = agencia.entrySet().iterator();
+        Iterator<Vehiculo> it = agencia.iterator();
         while (it.hasNext()) {
             if (it.next() instanceof Coche) {
                 Coche c = (Coche) it.next();
