@@ -58,10 +58,12 @@ public class Ejercicio1 {
                     a.eliminar(matricula);
                 }
                 case 3->{
-                    System.out.println("motos aseguradas"+a.listarMotos(Est.introEntero("introduce prima para comparar")));
+                    System.out.println("motos aseguradas\n"+a.listarMotos(Est.introEntero("introduce prima para comparar")));
                 }
                 case 4->{
-                    System.out.println("conductores asegurados\n"+a.listarConductores());
+                    for (Conductor c : a.listarConductores()) {
+                        System.out.println(Est.mostrarDatos(c.datosObjeto()));
+                    }                    
                 }
                 case 5->{
                     System.out.println("numero total de vehiculos creados:"+Vehiculo.getnVehiculos());
@@ -78,6 +80,6 @@ public class Ejercicio1 {
             }
             
         }while(op != 7);
-        
+      
     }
 }

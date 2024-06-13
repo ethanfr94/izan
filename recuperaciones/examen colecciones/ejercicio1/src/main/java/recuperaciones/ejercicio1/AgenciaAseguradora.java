@@ -78,7 +78,7 @@ public class AgenciaAseguradora {
         return lista;
     }
 
-    public TreeSet listarConductores() {
+    public TreeSet<Conductor> listarConductores() {
         TreeSet<Conductor> cond = new TreeSet<>();
         for (Vehiculo v : agencia) {
             cond.add(v.getConductor());
@@ -91,16 +91,18 @@ public class AgenciaAseguradora {
         int max = 0;
         Iterator<Vehiculo> it = agencia.iterator();
         while (it.hasNext()) {
-            if (it.next() instanceof Coche) {
-                Coche c = (Coche) it;
+            Vehiculo v = it.next();
+            if (v instanceof Coche) {
+                Coche c = (Coche) v;
                 if (c.getPotencia() > max) {
                     max = c.getPotencia();
                 }
             }
         }
         while (it.hasNext()) {
-            if (it.next() instanceof Coche) {
-                Coche c = (Coche) it;
+            Vehiculo v = it.next();
+            if (v instanceof Coche) {
+                Coche c = (Coche) v;
                 if (max == c.getPotencia()) {
                     s = c;
                 }
