@@ -98,9 +98,8 @@ public abstract class Vehiculo implements Primable, Identificable, Comparable<Ve
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.matricula);
-        hash = 29 * hash + Objects.hashCode(this.modelo);
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.matricula);
         return hash;
     }
 
@@ -116,11 +115,10 @@ public abstract class Vehiculo implements Primable, Identificable, Comparable<Ve
             return false;
         }
         final Vehiculo other = (Vehiculo) obj;
-        if (!Objects.equals(this.matricula, other.matricula)) {
-            return false;
-        }
-        return Objects.equals(this.modelo, other.modelo);
+        return Objects.equals(this.matricula, other.matricula);
     }
+
+    
 
     
     

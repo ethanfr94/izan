@@ -22,15 +22,18 @@ public class AgenciaAseguradora {
         agencia = new TreeSet<>();
     }
 
-    public void addVehiculo(String matricula, Vehiculo v) {
-        if (v instanceof Coche) {
+    public boolean insertar(Vehiculo v) {
+        return agencia.add(v);
+    }
+        //no es necesario instanciar porque elimina el vehiculo
+        /*if (v instanceof Coche) {
             Coche c = (Coche) v;
             agencia.add(c);
         } else if (v instanceof Moto) {
             Moto m = (Moto) v;
             agencia.add( m);
-        }
-    }
+        }*/
+    
 
     public boolean eliminar(String matricula) {
         int old = agencia.size();

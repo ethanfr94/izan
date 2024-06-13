@@ -41,14 +41,14 @@ public class Ejercicio1 {
                         int pot = Est.pedirPotencia();   
                         if(!matricula.equals("XXXX")){
                             Vehiculo v = new Coche(matricula, modelo, c, pot);
-                            a.addVehiculo(matricula, v);
+                            a.insertar(v);
                             System.out.println("vehiculo registrado "+Est.mostrarDatos(v.datosObjeto()));
                         }else System.out.println("no se puede insertar el vehiculo");                        
                     }else{
                         int cil = Est.pedirCilindrada();   
                         if(!matricula.equals("XXXX")){
                             Vehiculo v = new Moto(matricula, modelo, c, cil);
-                            a.addVehiculo(matricula, v);
+                            a.insertar(v);
                             System.out.println("vehiculo registrado "+Est.mostrarDatos(v.datosObjeto()));
                         }   else System.out.println("no se puede insertar el vehiculo");    
                     }                    
