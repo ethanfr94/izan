@@ -4,7 +4,6 @@
 
 package recuperaciones.ejercicio1;
 
-import java.sql.Connection;
 import java.time.LocalDate;
 
 /**
@@ -13,8 +12,7 @@ import java.time.LocalDate;
  */
 public class Ejercicio1 {
 
-    public static void main(String[] args) {
-        Connection conn = AccesoBD.getInstance().getConn();
+    public static void main(String[] args) {        
         
         LibroDAOImp libros = new LibroDAOImp();
         
@@ -29,8 +27,8 @@ public class Ejercicio1 {
         libros.insertar(l1);
        
         System.out.println("apartado 3");
-        Lector le1 = new Lector(11,"juan martinez","9788433975744",LocalDate.now());        
-        Lector lect = new Lector(12,"ana olvido","9788433975744", LocalDate.now());
+        Lector le1 = new Lector(11,"juan martinez",l1,LocalDate.now());        
+        Lector le2 = new Lector(12,"ana olvido",l1, LocalDate.now());
         
         System.out.println("apartado 4");
         libros.modificar("9788433975744");

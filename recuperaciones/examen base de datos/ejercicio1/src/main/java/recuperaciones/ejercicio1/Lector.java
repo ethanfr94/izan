@@ -14,13 +14,13 @@ import java.time.LocalDate;
 public class Lector {
     private int id;
     private String nombre;
-    private String cod_libro;
+    private Libro libro;
     private LocalDate fecha;
 
-    public Lector(int id, String nombre, String cod_libro, LocalDate fecha) {
+    public Lector(int id, String nombre, Libro cod_libro, LocalDate fecha) {
         this.id = id;
         this.nombre = nombre;
-        this.cod_libro = cod_libro;
+        this.libro = cod_libro;
         this.fecha = fecha;
     }
     
@@ -40,12 +40,12 @@ public class Lector {
         this.nombre = nombre;
     }
 
-    public String getCod_libro() {
-        return cod_libro;
+    public Libro getCod_libro() {
+        return libro;
     }
 
-    public void setCod_libro(String cod_libro) {
-        this.cod_libro = cod_libro;
+    public void setCod_libro(Libro cod_libro) {
+        this.libro = cod_libro;
     }
 
     public LocalDate getFecha() {
@@ -58,7 +58,7 @@ public class Lector {
 
     @Override
     public String toString() {
-        return "id: " + id + ", nombre: " + nombre + ", cod_libro: " + cod_libro + ", fecha: " + fecha;
+        return "id: " + id + ", nombre: " + nombre + ", cod_libro: " + libro.getCod_libro() + ", fecha: " + fecha;
     }
     
     

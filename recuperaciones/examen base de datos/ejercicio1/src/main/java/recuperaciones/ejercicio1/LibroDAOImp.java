@@ -23,10 +23,9 @@ public class LibroDAOImp implements Repositorio<Libro> {
     public List<Libro> listar() {
         Connection conn = AccesoBD.getInstance().getConn();
         List<Libro> libros = new ArrayList<>();
-        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT COD_LIBRO, TITULO, AUTOR, COPIAS FROM libros");) {
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT COD_LIBRO, TITULO, AUTOR, COPIAS FROM libros"); ResultSet rs = stmt.executeQuery();) {
             while (rs.next()) {
                 Libro libro = new Libro(rs.getString("COD_LIBRO"), rs.getString("TITULO"), rs.getString("AUTOR"), rs.getInt("COPIAS"));
-
                 if (!libros.add(libro)) {
                     throw new Exception("error no se ha insertado el objeto en la colección");
                 }
@@ -44,15 +43,12 @@ public class LibroDAOImp implements Repositorio<Libro> {
         Libro libro = null;
         Connection conn = AccesoBD.getInstance().getConn();
         String sql = "SELECT COD_LIBRO, TITULO, AUTOR, COPIAS FROM libros where COD_LIBRO=?;";
-
         try (PreparedStatement ps = conn.prepareStatement(sql);) {
             ps.setString(1, cod);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-
                 libro = new Libro(rs.getString("COD_LIBRO"), rs.getString("TITULO"), rs.getString("AUTOR"), rs.getInt("COPIAS"));
             }
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -68,7 +64,6 @@ public class LibroDAOImp implements Repositorio<Libro> {
             stmt.setString(2, libro.getTitulo());
             stmt.setString(3, libro.getAutor());
             stmt.setInt(4, libro.getCopias());
-
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha modificado un solo registro");
@@ -85,13 +80,13 @@ public class LibroDAOImp implements Repositorio<Libro> {
     @Override
     public void modificar(String cod) {
         Connection conn = AccesoBD.getInstance().getConn();
+        Libro l = porCod(cod);
         String sql = "UPDATE libros SET TITULO = ?, AUTOR = ?, COPIAS = ? WHERE COD_LIBRO=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql);) {
             stmt.setString(4, cod);
-            stmt.setString(1, Tec.IntroTitulo());
-            stmt.setString(2, Tec.IntroAutor());
-            stmt.setInt(3, Tec.IntroEntero());
-
+            stmt.setString(1, l.getTitulo());
+            stmt.setString(2, l.getAutor());
+            stmt.setInt(3, (l.getCopias()/2));
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha modificado un solo registro");
@@ -108,19 +103,20 @@ public class LibroDAOImp implements Repositorio<Libro> {
     @Override
     public boolean eliminar(String cod) {
         Connection conn = AccesoBD.getInstance().getConn();
+        boolean borrado = false;
         String sql = "DELETE FROM libros WHERE COD_LIBRO=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql);) {
             stmt.setString(1, cod);
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha borrado un solo registro");
-            }else return true;
+            }else borrado = true;
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return false;
+        return borrado;
     }
 
 
