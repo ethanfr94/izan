@@ -17,8 +17,7 @@ public class Lector {
     private Libro libro;
     private LocalDate fecha;
 
-    public Lector(int id, String nombre, Libro cod_libro, LocalDate fecha) {
-        this.id = id;
+    public Lector(String nombre, Libro cod_libro, LocalDate fecha) {        
         this.nombre = nombre;
         this.libro = cod_libro;
         this.fecha = fecha;
@@ -40,11 +39,11 @@ public class Lector {
         this.nombre = nombre;
     }
 
-    public Libro getCod_libro() {
+    public Libro getLibro() {
         return libro;
     }
 
-    public void setCod_libro(Libro cod_libro) {
+    public void setLibro(Libro cod_libro) {
         this.libro = cod_libro;
     }
 
@@ -58,7 +57,7 @@ public class Lector {
 
     @Override
     public String toString() {
-        return "id: " + id + ", nombre: " + nombre + ", cod_libro: " + libro.getCod_libro() + ", fecha: " + fecha;
+        return "nombre: " + nombre + ", cod_libro: " + libro.getCod_libro() + ", fecha: " + fecha;
     }
     
     

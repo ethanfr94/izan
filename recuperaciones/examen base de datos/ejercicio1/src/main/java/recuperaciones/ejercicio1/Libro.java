@@ -56,6 +56,6 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "cod_libro: " + cod_libro + ", titulo: " + titulo + ", autor: " + autor + ", copia: " + copias;
+        return "cod_libro: " + cod_libro + ", titulo: " + titulo + ", autor: " + autor + ", copias: " + copias;
     }
 }

@@ -5,6 +5,7 @@
 package recuperaciones.ejercicio1;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -14,39 +15,57 @@ public class Ejercicio1 {
 
     public static void main(String[] args) {        
         
-        LibroDAOImp libros = new LibroDAOImp();
+        LibroDAOImp libro = new LibroDAOImp();  
         
         
-        
-        System.out.println("apartado 1");
-        System.out.println(libros.listar());
-        
-        
-        System.out.println("apartado 2");
+       
+        System.out.println("\napartado 1");
+        List<Libro> libros = libro.listar();
+        for (Libro l : libros) {
+            System.out.println(l.toString()+"\n");
+        }        
+       
+        System.out.println("\napartado 2");
         Libro l1 = new Libro("9788433975744","El Gran Gatsby","F.Scott Fitgerald",50);
-        libros.insertar(l1);
-       
-        System.out.println("apartado 3");
-        Lector le1 = new Lector(11,"juan martinez",l1,LocalDate.now());        
-        Lector le2 = new Lector(12,"ana olvido",l1, LocalDate.now());
+        libro.insertar(l1);
         
-        System.out.println("apartado 4");
-        libros.modificar("9788433975744");
-        
-        System.out.println("apartado 5");
+        System.out.println("\napartado 3");
+        Lector le1 = new Lector("juan martinez",l1,LocalDate.now());        
+        Lector le2 = new Lector("ana olvido",l1, LocalDate.now());
         LectorImp.guardar(le1);
-        //pruebas de funcionamiento de metodos
-        System.out.println(LectorImp.porNombre("Laura Gomez"));
-        System.out.println(LectorImp.lLectoresLibro("9780452284234"));
-        System.out.println(libros.listar());
-        System.out.println(libros.porCod("9780670813023"));
-        System.out.println("apartado 6");
-        libros.porCod("9788433975744");
-       
-        libros.modificar("9788433975744");
-        System.out.println(libros.eliminar("9788433975744"));
+        //LectorImp.guardar(le2);
         
-        LectorImp.eliminar(11);
+        System.out.println("\napartado 4");
+        libro.modificar("9788433975744");
+        
+        System.out.println("\napartado 5");
+        //LectorImp.guardar(le1);        
+              
+        System.out.println("\napartado 6");
+        System.out.println(libro.porCod("9788433975744").toString());    
+        
+        System.out.println("\napartado 7");
+        libro.mostrarLectores(l1);
+        
+        System.out.println("\napartado 8");
+        /*
+        si el usuario ha sido modificado en el apartado 5 la fecha estara a null y el metodo porNombre no creara un objeto al ancontrar un nulo en la columna 
+        */
+        LectorImp.eliminar(LectorImp.porNombre("juan martinez").getId());  
+       
+        System.out.println("\napartado 9");
+        /*
+        si hay un lector que ha leido ese libro no lo borrara por tener el codigo que es foreign key
+        y no esta habilitado el borrado en cascada
+        */
+          if(libro.eliminar("9788433975744")){
+              System.out.println("libro eliminado correctamente");
+          }
+          else{
+              System.out.println("error al eliminar el libro");
+              System.out.println(libro.eliminar("9788433975744"));
+          } 
+        
         
         
     }

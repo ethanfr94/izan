@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package recuperaciones.ejercicio1;
 
 import java.sql.Connection;
@@ -10,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,13 +81,12 @@ public class LibroDAOImp implements Repositorio<Libro> {
     public void modificar(String cod) {
         Connection conn = AccesoBD.getInstance().getConn();
         Libro l = porCod(cod);
-        String sql = "UPDATE libros SET TITULO = ?, AUTOR = ?, COPIAS = ? WHERE COD_LIBRO=?";
+        int salida = -1;
+        String sql = "UPDATE libros SET COPIAS = (?/2) WHERE COD_LIBRO=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql);) {
-            stmt.setString(4, cod);
-            stmt.setString(1, l.getTitulo());
-            stmt.setString(2, l.getAutor());
-            stmt.setInt(3, (l.getCopias()/2));
-            int salida = stmt.executeUpdate();
+            stmt.setInt(1, l.getCopias());
+            stmt.setString(2, cod);
+            salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha modificado un solo registro");
             } else {
@@ -98,27 +97,39 @@ public class LibroDAOImp implements Repositorio<Libro> {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-    }
+    } 
 
-    @Override
+    //@Override
     public boolean eliminar(String cod) {
         Connection conn = AccesoBD.getInstance().getConn();
+        int salida = -1;
         boolean borrado = false;
         String sql = "DELETE FROM libros WHERE COD_LIBRO=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql);) {
             stmt.setString(1, cod);
-            int salida = stmt.executeUpdate();
-            if (salida != 1) {
-                throw new Exception(" No se ha borrado un solo registro");
-            }else borrado = true;
+            salida = stmt.executeUpdate();
+            if (salida == 1) {
+                borrado = true;
+            } 
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+        } 
         return borrado;
     }
-
-
+    
+    public void mostrarLectores(Libro libro){
+        Connection conn = AccesoBD.getInstance().getConn();
+        String sql = "SELECT NOMBRE,COD_LIBRO,FECHA_PRESTAMO FROM lectores where COD_LIBRO=?;";
+        try (PreparedStatement ps = conn.prepareStatement(sql);) {
+            ps.setString(1, libro.getCod_libro());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Lector lector = new Lector(rs.getString("NOMBRE"), porCod(rs.getString("COD_LIBRO")), LocalDate.parse(rs.getString("FECHA_PRESTAMO")));
+                System.out.println(lector.toString());
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 }
