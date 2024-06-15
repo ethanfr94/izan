@@ -45,7 +45,10 @@ public class Ejercicio1 {
         System.out.println(libro.porCod("9788433975744").toString());    
         
         System.out.println("\napartado 7");
-        libro.mostrarLectores(l1);
+        List<Lector> l = LectorImp.lLectoresLibro("9788433975744");
+                for (Lector lector : l) {
+                    System.out.println(lector.toString()+"\n");
+        }
         
         System.out.println("\napartado 8");
         /*
@@ -62,8 +65,7 @@ public class Ejercicio1 {
               System.out.println("libro eliminado correctamente");
           }
           else{
-              System.out.println("error al eliminar el libro");
-              System.out.println(libro.eliminar("9788433975744"));
+              System.out.println("error al eliminar el libro");              
           } 
         
         

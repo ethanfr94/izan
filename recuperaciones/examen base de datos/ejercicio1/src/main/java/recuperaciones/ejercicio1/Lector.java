@@ -17,9 +17,9 @@ public class Lector {
     private Libro libro;
     private LocalDate fecha;
 
-    public Lector(String nombre, Libro cod_libro, LocalDate fecha) {        
+    public Lector(String nombre, Libro libro, LocalDate fecha) {        
         this.nombre = nombre;
-        this.libro = cod_libro;
+        this.libro = libro;
         this.fecha = fecha;
     }
     

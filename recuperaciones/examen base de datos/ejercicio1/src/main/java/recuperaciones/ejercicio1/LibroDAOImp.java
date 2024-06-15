@@ -117,19 +117,6 @@ public class LibroDAOImp implements Repositorio<Libro> {
         return borrado;
     }
     
-    public void mostrarLectores(Libro libro){
-        Connection conn = AccesoBD.getInstance().getConn();
-        String sql = "SELECT NOMBRE,COD_LIBRO,FECHA_PRESTAMO FROM lectores where COD_LIBRO=?;";
-        try (PreparedStatement ps = conn.prepareStatement(sql);) {
-            ps.setString(1, libro.getCod_libro());
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Lector lector = new Lector(rs.getString("NOMBRE"), porCod(rs.getString("COD_LIBRO")), LocalDate.parse(rs.getString("FECHA_PRESTAMO")));
-                System.out.println(lector.toString());
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+    
 
 }
