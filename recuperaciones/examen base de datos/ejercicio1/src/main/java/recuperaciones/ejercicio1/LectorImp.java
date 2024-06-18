@@ -26,7 +26,7 @@ public class LectorImp {
             ps.setString(1, cod);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Lector lector = new Lector(0, rs.getString("NOMBRE"), ld.porCod(rs.getString("COD_LIBRO")), rs.getDate("FECHA_PRESTAMO").toLocalDate());
+                Lector lector = new Lector(rs.getInt("ID"), rs.getString("NOMBRE"), ld.porCod(rs.getString("COD_LIBRO")), rs.getDate("FECHA_PRESTAMO").toLocalDate());
                 if (!lectores.add(lector)) {
                     throw new Exception("error no se ha insertado el objeto en la colección");
                 }
@@ -46,7 +46,7 @@ public class LectorImp {
             sql = "insert into lectores (NOMBRE,COD_LIBRO,FECHA_PRESTAMO) values (?,?,?);";
             insertar = true;
         } else {
-            sql = "UPDATE lectores SET COD_LIBRO = NULL, FECHA_PRESTAMO = NULL WHERE NOMBRE = ?;";
+            sql = "UPDATE lectores SET COD_LIBRO = NULL, FECHA_PRESTAMO = NULL WHERE ID = ?;";
         }
         try (PreparedStatement ps = getConnection().prepareStatement(sql);) {
             if (insertar) {
@@ -54,7 +54,7 @@ public class LectorImp {
                 ps.setString(2, lector.getLibro().getCod_libro());
                 ps.setDate(3, Date.valueOf(lector.getFecha()));
             } else {
-                ps.setString(1, lector.getNombre());
+                ps.setInt(1, lector.getId());
             }
             int salida = ps.executeUpdate();
             if (salida != 1) {
@@ -65,9 +65,9 @@ public class LectorImp {
                 }
             }else{
                 if (insertar) {
-                    System.out.println("1lector insertado correctamente");
+                    System.out.println("lector insertado correctamente");
                 } else {
-                    System.out.println("1lector modificado correctamente");
+                    System.out.println("lector modificado correctamente");
                 }
             }
         } catch (SQLException e) {
