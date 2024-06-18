@@ -16,6 +16,7 @@ import java.util.Objects;
 public class Departamento implements Identificable, Serializable {
 
     String _id, _codigo, _nombre;
+    
 
     public Departamento(String _id, String _codigo, String _nombre) {
         this._id = _id;
@@ -78,6 +79,7 @@ public class Departamento implements Identificable, Serializable {
         return Objects.equals(this._id, other._id);
     }
 
+    
     
     
 
