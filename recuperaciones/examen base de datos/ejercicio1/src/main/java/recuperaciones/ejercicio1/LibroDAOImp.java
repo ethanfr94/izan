@@ -18,12 +18,16 @@ import java.util.List;
  * @author Izan Franco Anduaga
  */
 public class LibroDAOImp implements Repositorio<Libro> {
+    
+    private Connection getConnection(){
+        return AccesoBD.getInstance().getConn();
+    }
 
     @Override
     public List<Libro> listar() {
-        Connection conn = AccesoBD.getInstance().getConn();
+        //Connection conn = AccesoBD.getInstance().getConn();
         List<Libro> libros = new ArrayList<>();
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT COD_LIBRO, TITULO, AUTOR, COPIAS FROM libros"); ResultSet rs = stmt.executeQuery();) {
+        try (PreparedStatement stmt = getConnection().prepareStatement("SELECT COD_LIBRO, TITULO, AUTOR, COPIAS FROM libros"); ResultSet rs = stmt.executeQuery();) {
             while (rs.next()) {
                 Libro libro = new Libro(rs.getString("COD_LIBRO"), rs.getString("TITULO"), rs.getString("AUTOR"), rs.getInt("COPIAS"));
                 if (!libros.add(libro)) {
@@ -41,9 +45,9 @@ public class LibroDAOImp implements Repositorio<Libro> {
     @Override
     public Libro porCod(String cod) {
         Libro libro = null;
-        Connection conn = AccesoBD.getInstance().getConn();
+        //Connection conn = AccesoBD.getInstance().getConn();
         String sql = "SELECT COD_LIBRO, TITULO, AUTOR, COPIAS FROM libros where COD_LIBRO=?;";
-        try (PreparedStatement ps = conn.prepareStatement(sql);) {
+        try (PreparedStatement ps = getConnection().prepareStatement(sql);) {
             ps.setString(1, cod);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -57,9 +61,9 @@ public class LibroDAOImp implements Repositorio<Libro> {
 
     @Override
     public void insertar(Libro libro) {
-        Connection conn = AccesoBD.getInstance().getConn();
+        //Connection conn = AccesoBD.getInstance().getConn();
         String sql = "insert into libros (COD_LIBRO,TITULO,AUTOR,COPIAS) values (?,?,?,?)";
-        try (PreparedStatement stmt = conn.prepareStatement(sql);) {
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setString(1, libro.getCod_libro());
             stmt.setString(2, libro.getTitulo());
             stmt.setString(3, libro.getAutor());
@@ -79,11 +83,11 @@ public class LibroDAOImp implements Repositorio<Libro> {
 
     @Override
     public void modificar(String cod) {
-        Connection conn = AccesoBD.getInstance().getConn();
+        //Connection conn = AccesoBD.getInstance().getConn();
         Libro l = porCod(cod);
         int salida = -1;
         String sql = "UPDATE libros SET COPIAS = (?/2) WHERE COD_LIBRO=?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql);) {
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, l.getCopias());
             stmt.setString(2, cod);
             salida = stmt.executeUpdate();
@@ -101,13 +105,13 @@ public class LibroDAOImp implements Repositorio<Libro> {
 
     //@Override
     public boolean eliminar(String cod) {
-        Connection conn = AccesoBD.getInstance().getConn();
+        //Connection conn = AccesoBD.getInstance().getConn();
         int salida = -1;
         boolean borrado = false;
         String sql = "DELETE FROM libros WHERE COD_LIBRO=?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql);) {
-            stmt.setString(1, cod);
-            salida = stmt.executeUpdate();
+        try (PreparedStatement ps = getConnection().prepareStatement(sql);) {
+            ps.setString(1, cod);
+            salida = ps.executeUpdate();
             if (salida == 1) {
                 borrado = true;
             } 
