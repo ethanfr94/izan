@@ -1,7 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package recuperaciones.ejercicio2;
 
 import java.io.BufferedReader;
@@ -22,29 +21,35 @@ import java.util.logging.Logger;
 public class Ejercicio2 {
 
     public static void main(String[] args) {
-        File f = new File(args[0]);        
-        File d = new File("datos.txt");
-        String texto = "";
-        
-        try (BufferedReader br = new BufferedReader(new FileReader(f)); BufferedWriter bw = new BufferedWriter(new FileWriter(d));) {
-            texto = br.readLine();
-            StringTokenizer st = new StringTokenizer(texto, "*");
-            while (st.hasMoreTokens()) {
-                String linea = st.nextToken();
-                System.out.println(linea);
-                bw.write(linea);
-                bw.newLine();
-            }
+        if (args.length != 1) {
+            System.out.println("falta el nombre del fichero");
+        } else {
+            File f = new File(args[0]);
+            if (f.exists()) {
+                File d = new File("datos.txt");
+                String texto = "";
 
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Ejercicio2.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Ejercicio2.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-        f.delete();
-        d.renameTo(f);
-        
-        
+                try (BufferedReader br = new BufferedReader(new FileReader(f)); BufferedWriter bw = new BufferedWriter(new FileWriter(d));) {
+                    texto = br.readLine();
+                    StringTokenizer st = new StringTokenizer(texto, "*");
+                    while (st.hasMoreTokens()) {
+                        String linea = st.nextToken();
+                        System.out.println(linea);
+                        bw.write(linea);
+                        bw.newLine();
+                    }
+
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Ejercicio2.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Ejercicio2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                f.delete();
+                d.renameTo(f);
+            }else{
+                System.out.println("no existe el fichero");
+            }
+        }
     }
 }
