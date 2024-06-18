@@ -22,7 +22,7 @@ public class Frame extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    public Frame() {        
+    public Frame() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -280,7 +280,7 @@ public class Frame extends javax.swing.JFrame {
 
     private void btLogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btLogMouseClicked
         // TODO add your handling code here:
-        if (txtUser.getText().isBlank() || txtPass.getText().isBlank()) {            
+        if (txtUser.getText().isBlank() || txtPass.getText().isBlank()) {
             FuncionesBD.muestraMensaje("introduce los datos de usuario y password", "warning");
         } else {
             if (FuncionesBD.verificarUsuario(txtUser.getText(), txtPass.getText())) {
@@ -297,7 +297,7 @@ public class Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         profesores.setVisible(false);
         alta.setVisible(true);
-        
+
         cargarComboDepartamentos();
     }//GEN-LAST:event_btAniadirMouseClicked
 
@@ -313,7 +313,7 @@ public class Frame extends javax.swing.JFrame {
         txtApe.setText("");
         txtEmail.setText("");
         //cmbDep.set
-        alta.setVisible(false);        
+        alta.setVisible(false);
         profesores.setVisible(true);
         cargarTablaProfesores();
     }//GEN-LAST:event_btVolverMouseClicked
@@ -324,7 +324,7 @@ public class Frame extends javax.swing.JFrame {
         tabla.setNumRows(0);
         ArrayList<Profesor> profesores = FuncionesBD.listarProfesores();
         for (Profesor a : profesores) {
-            String fila[] = {a.getDni(), a.getNombre(), a.getApellidos(), a.getEmail()};
+            String fila[] = {a.getDni(), a.getNombre(), a.getApellidos(), a.getEmail(), a.getDepartamento().getNombre()};
             tabla.addRow(fila);
         }
         tblProf.setModel(tabla);
@@ -334,10 +334,7 @@ public class Frame extends javax.swing.JFrame {
         combo = new DefaultComboBoxModel();
         tabla.setNumRows(0);
         ArrayList<Departamento> departamentos = FuncionesBD.listarDepartamentos();
-        for (Departamento a : departamentos) {
-
-            combo.addAll(departamentos);
-        }
+        combo.addAll(departamentos);
         cmbDep.setModel(combo);
     }
 

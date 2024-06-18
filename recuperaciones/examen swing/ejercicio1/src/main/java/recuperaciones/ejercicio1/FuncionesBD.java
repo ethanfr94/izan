@@ -38,19 +38,14 @@ public class FuncionesBD {
 
     public static boolean verificarUsuario(String user, String pass) {
         boolean valido = false;
-        String sql = "select usuario, password, administrador from usuarios where usuario = ? and password = MD5(?) ;";
-        Profesor p = null;
+        String sql = "select usuario, password, administrador from usuarios where usuario = ? and password = MD5(?) and administrador = 1;";
         ResultSet rs = null;
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
             ps.setString(1, user);
             ps.setString(2, pass);
             rs = ps.executeQuery();
             if (rs.next()) {
-                if (rs.getInt("administrador") == 1) {
-                    return true;
-                } else {
-                    muestraMensaje("permiso denegado", "error");
-                }
+                valido = true;
             } else {
                 muestraMensaje("usuario o contraseña desconocidos", "error");
             }
@@ -80,11 +75,11 @@ public class FuncionesBD {
 
     public static ArrayList<Profesor> listarProfesores() {
         ArrayList<Profesor> lista = new ArrayList<>();
-        String sql = "SELECT dni,profesores.nombre,apellidos,correo_electronico,departamentos.id as departamento FROM profesores inner join departamentos on departamentos.id=departamento_id;";
+        String sql = "SELECT dni,nombre,apellidos,correo_electronico,departamento_id FROM profesores ;";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             try (ResultSet rs = stmt.executeQuery(sql);) {
                 while (rs.next()) {
-                    Profesor p = new Profesor(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("correo_electronico"), porId(rs.getInt("departamento")));
+                    Profesor p = new Profesor(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("correo_electronico"), porId(rs.getInt("departamento_id")));
                     if (!lista.add(p)) {
                         throw new Exception("error no se ha insertado el objeto en la colección");
                     }
