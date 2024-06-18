@@ -53,6 +53,7 @@ public class LectorImp {
                 ps.setString(1, lector.getNombre());
                 ps.setString(2, lector.getLibro().getCod_libro());
                 ps.setDate(3, Date.valueOf(lector.getFecha()));
+                lector.setId();
             } else {
                 ps.setInt(1, lector.getId());
             }
