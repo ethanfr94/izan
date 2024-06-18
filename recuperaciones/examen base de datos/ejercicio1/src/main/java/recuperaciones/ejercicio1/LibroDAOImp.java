@@ -50,7 +50,8 @@ public class LibroDAOImp implements Repositorio<Libro> {
         try (PreparedStatement ps = getConnection().prepareStatement(sql);) {
             ps.setString(1, cod);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            // if porque sabemos que solo puede dar un resultado, si puede haber mas utilizamos while
+            if (rs.next()) {
                 libro = new Libro(rs.getString("COD_LIBRO"), rs.getString("TITULO"), rs.getString("AUTOR"), rs.getInt("COPIAS"));
             }
         } catch (SQLException e) {
@@ -75,7 +76,8 @@ public class LibroDAOImp implements Repositorio<Libro> {
                 System.out.println("Filas modificada: " + salida);
             }
         } catch (SQLException ex) {
-            System.out.println("SQLException: " + ex.getMessage());
+            if(ex.getErrorCode()==1062)System.out.println("el libro ya existe");
+            else System.out.println("SQLException: " + ex.getMessage());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -86,10 +88,9 @@ public class LibroDAOImp implements Repositorio<Libro> {
         //Connection conn = AccesoBD.getInstance().getConn();
         Libro l = porCod(cod);
         int salida = -1;
-        String sql = "UPDATE libros SET COPIAS = (?/2) WHERE COD_LIBRO=?";
+        String sql = "UPDATE libros SET COPIAS = COPIAS/2 WHERE COD_LIBRO=?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            stmt.setInt(1, l.getCopias());
-            stmt.setString(2, cod);
+            stmt.setString(1, cod);
             salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha modificado un solo registro");
@@ -116,7 +117,7 @@ public class LibroDAOImp implements Repositorio<Libro> {
                 borrado = true;
             } 
         } catch (SQLException ex) {
-            System.out.println("SQLException: " + ex.getMessage());
+            
         } 
         return borrado;
     }
