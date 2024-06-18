@@ -28,6 +28,7 @@ public class Tec {
                 System.out.println("Error " + a.toString());
                 t.next();
             } catch (NumberFormatException n) {
+                    
                 System.out.println(n.toString());
             }
         } while (!correcto);
@@ -37,7 +38,7 @@ public class Tec {
     public static String modoFicha(LinkedHashMap<String, String> mapa) {
         String cdn = "";
         for (Map.Entry<String, String> lista : mapa.entrySet()) {
-            cdn += " " + lista.getValue() + "\n";
+            cdn += " " + lista.getKey() + lista.getValue() + "\n";
         }
         return cdn;
     }

@@ -41,11 +41,8 @@ public class Funciones {
 
     public static ArrayList<Profesor> leerProfesores(File f, File d) {
         ArrayList<Profesor> lista = new ArrayList<>();
-        ArrayList<Departamento> depts = new ArrayList<>();
-        depts = leerDepartamentos(d);
+        ArrayList<Departamento> depts = leerDepartamentos(d);
         String linea;
-        Departamento dep = null;
-        Profesor p = null;
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
             while ((linea = br.readLine()) != null) {
                 StringTokenizer st = new StringTokenizer(linea, ",");
@@ -57,8 +54,8 @@ public class Funciones {
                     String id = st.nextToken();
                     for (Departamento dept : depts) {
                         if (dept.getId().equals(id)) {
-                            dep = dept;
-                            p = new Profesor(apellido, nombre, dni, email, dep);
+                            Departamento dep = dept;
+                            Profesor p = new Profesor(apellido, nombre, dni, email, dep);
                             lista.add(p);
                         }
                     }
@@ -73,37 +70,37 @@ public class Funciones {
     }
 
     public static void listarProfesores(ArrayList<Profesor> profesor) {
-        int num = 0;
         for (Profesor a : profesor) {
-            System.out.println(a.datosObjeto());
-            num++;
+            Tec.modoFicha(a.datosObjeto());
+            System.out.println(Tec.modoFicha(a.datosObjeto()));
         }
-        System.out.println("\nHay " + num + " profesores\n");
+        System.out.println("\nHay " + profesor.size() + " profesores\n");
     }
 
     public static int guardarProfDep(ArrayList<Profesor> profesor, String cod) {
         int num = 0;
         File f = new File("ProfesoresDEP.dat");
-
-        for (Profesor a : profesor) {
-            if (a.getDept().getCodigo().equalsIgnoreCase(cod)) {
-                if (f.exists()) {
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(f));) {
+            for (Profesor a : profesor) {
+                if (a.getDept().getCodigo().equalsIgnoreCase(cod)) {
+                    //al sobreescribir el fichero no es necesario utilizar el myobjectoutputstream ya que 
+                    //vamos a machacarlo cada vez
+                    //si añadiesemos y usasemos el myobjectoutputstream el orden seria for >> if >> try
+                    /*if (f.exists()) {
                     try (Mos gs = new Mos(new FileOutputStream(f, true));) {
                         gs.writeObject(a);
                         num++;
                     } catch (IOException e) {
                         System.out.println("No se puede abrir el fichero");
                     }
-                } else {
-                    try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(f));) {
-                        os.writeObject(a);
-                        num++;
-
-                    } catch (IOException e) {
-                        System.out.println("No se ha podido abrir el fichero");
-                    }
+                } else {*/
+                    os.writeObject(a);
+                    num++;
+                    //}
                 }
             }
+        } catch (IOException e) {
+            System.out.println("No se ha podido abrir el fichero");
         }
         return num;
     }
@@ -117,7 +114,7 @@ public class Funciones {
                 linea = Tec.modoFicha(p.datosObjeto());
                 System.out.println(linea);
             }
-            
+
         } catch (EOFException eof) {
             System.out.println("======Fin del fichero ======");
         } catch (IOException ex) {
@@ -125,7 +122,7 @@ public class Funciones {
         } catch (ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
     }
 
     public static void grabarProfesores(ArrayList<Profesor> profesor) {
