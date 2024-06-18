@@ -30,8 +30,8 @@ public class Ejercicio1 {
         libro.insertar(l1);
         
         System.out.println("\napartado 3");
-        Lector le1 = new Lector("juan martinez",l1,LocalDate.now());        
-        Lector le2 = new Lector("ana olvido",l1, LocalDate.now());
+        Lector le1 = new Lector(0, "juan martinez",l1,LocalDate.now());        
+        Lector le2 = new Lector(0, "ana olvido",l1, LocalDate.now());
         LectorImp.guardar(le1);
         LectorImp.guardar(le2);
         
@@ -52,7 +52,7 @@ public class Ejercicio1 {
         
         System.out.println("\napartado 8");
         
-        LectorImp.eliminar(LectorImp.porNombre("juan martinez"));  
+        LectorImp.eliminar(le1.getId());  
        
         System.out.println("\napartado 9");
         /*
