@@ -106,20 +106,22 @@ public class Funciones {
     }
 
     public static void leerProfDep() {
+        boolean fin = false;
         File f = new File("ProfesoresDEP.dat");
         String linea = "";
         try (ObjectInputStream lec = new ObjectInputStream(new FileInputStream(f))) {
-            while (true) {
+            while (!fin) {
                 Profesor p = (Profesor) lec.readObject();
                 linea = Tec.modoFicha(p.datosObjeto());
                 System.out.println(linea);
             }
-
         } catch (EOFException eof) {
-            System.out.println("======Fin del fichero ======");
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            fin = true;
         } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
 
@@ -144,8 +146,8 @@ public class Funciones {
     public static void guardaDepartamentos(ArrayList<Profesor> profesor) {
         HashSet<Departamento> dep = new HashSet<>();
         for (Profesor s : profesor) {
-            Departamento d = s.getDept();
-            dep.add(d);
+
+            dep.add(s.getDept());
         }
         File f = new File("departamentos.txt");
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(f));) {

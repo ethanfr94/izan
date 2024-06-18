@@ -20,7 +20,7 @@ public class Ejercicio1 {
         ArrayList<Profesor> profes = null;
         ArrayList<Departamento> dep = null;
 
-        if (p == null || d == null) {
+        if (args.length!=2) {
             System.out.println("error. parametros no recibidos");
         } else if (p != null && d != null) {
             if (!p.exists() || !d.exists()) {
