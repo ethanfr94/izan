@@ -33,13 +33,13 @@ public class Ejercicio1 {
         Lector le1 = new Lector("juan martinez",l1,LocalDate.now());        
         Lector le2 = new Lector("ana olvido",l1, LocalDate.now());
         LectorImp.guardar(le1);
-        //LectorImp.guardar(le2);
+        LectorImp.guardar(le2);
         
         System.out.println("\napartado 4");
         libro.modificar("9788433975744");
         
         System.out.println("\napartado 5");
-        //LectorImp.guardar(le1);        
+        LectorImp.guardar(le1);        
               
         System.out.println("\napartado 6");
         System.out.println(libro.porCod("9788433975744").toString());    
@@ -51,15 +51,12 @@ public class Ejercicio1 {
         }
         
         System.out.println("\napartado 8");
-        /*
-        si el usuario ha sido modificado en el apartado 5 la fecha estara a null y el metodo porNombre no creara un objeto al ancontrar un nulo en la columna 
-        */
-        LectorImp.eliminar(LectorImp.porNombre("juan martinez").getId());  
+        
+        LectorImp.eliminar(LectorImp.porNombre("juan martinez"));  
        
         System.out.println("\napartado 9");
         /*
-        si hay un lector que ha leido ese libro no lo borrara por tener el codigo que es foreign key
-        y no esta habilitado el borrado en cascada
+        falta enseñar que lectores tiene el libro si no se ha podido eliminar
         */
           if(libro.eliminar("9788433975744")){
               System.out.println("libro eliminado correctamente");

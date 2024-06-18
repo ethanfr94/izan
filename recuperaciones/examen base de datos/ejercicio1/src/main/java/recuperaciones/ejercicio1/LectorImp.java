@@ -41,33 +41,25 @@ public class LectorImp {
         return lectores;
     }
 
-    public static Lector porNombre(String nombre) {
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        Lector lector = null;
-        LibroDAOImp ld = new LibroDAOImp();
+    public static int porNombre(String nombre) {
+        int id = -1;
         Connection conn = AccesoBD.getInstance().getConn();
-        String sql = "select ID, NOMBRE, COD_LIBRO, FECHA_PRESTAMO from lectores where NOMBRE = ?;";
+        String sql = "select ID from lectores where NOMBRE = ?;";
         try (PreparedStatement ps = conn.prepareStatement(sql);) {
             ps.setString(1, nombre);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                LocalDate fp = LocalDate.parse(rs.getString("FECHA_PRESTAMO"));
-                if (fp == null) {
-                    lector = new Lector(rs.getString("NOMBRE"), ld.porCod("9788433975744"), LocalDate.now());
-                } else {
-                    lector = new Lector(rs.getString("NOMBRE"), ld.porCod(rs.getString("COD_LIBRO")), LocalDate.parse(rs.getString("FECHA_PRESTAMO")));
-                    lector.setId(rs.getInt("ID"));
-                }
+                id = rs.getInt("ID");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return lector;
+        return id;
     }
 
     public static void guardar(Lector lector) {
         System.out.println(lector.toString());
-        if (porNombre(lector.getNombre()) == null) {
+        if (porNombre(lector.getNombre()) == -1) {
             insertar(lector);
         } else {
             modificar(lector);
