@@ -108,5 +108,5 @@ public class LectorImp {
             System.out.println("eliminado correctamente");
         }
     }
-
+    
 }

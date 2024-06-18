@@ -183,7 +183,7 @@ public class Biblioteca implements Identificable {
 
     @Override
     public String imprime() {
-        //ordenarLibros();
+        ordenarLibros();
         String ret = "---Biblioteca " + this.nombre + "---\n\n\tLibros\n";
         for (int i = 0; i < nLibros; i++) {          
                 ret += libros[i].imprime();            
