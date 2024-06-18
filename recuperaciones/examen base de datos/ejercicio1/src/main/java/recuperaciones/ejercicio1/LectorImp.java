@@ -39,10 +39,26 @@ public class LectorImp {
         return lectores;
     }
 
+    public static int dameId(Lector l) {
+        int id = -1;
+        Connection conn = AccesoBD.getInstance().getConn();
+        String sql = "select ID from lectores where NOMBRE = ?;";
+        try (PreparedStatement ps = conn.prepareStatement(sql);) {
+            ps.setString(1, l.getNombre());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("ID");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
+    
     public static void guardar(Lector lector) {
         String sql;
         boolean insertar = false;
-        if (lector.getId() == 0) {
+        if (dameId(lector)<1) {
             sql = "insert into lectores (NOMBRE,COD_LIBRO,FECHA_PRESTAMO) values (?,?,?);";
             insertar = true;
         } else {
@@ -53,9 +69,9 @@ public class LectorImp {
                 ps.setString(1, lector.getNombre());
                 ps.setString(2, lector.getLibro().getCod_libro());
                 ps.setDate(3, Date.valueOf(lector.getFecha()));
-                lector.setId();
+                
             } else {
-                ps.setInt(1, lector.getId());
+                ps.setInt(1, dameId(lector));
             }
             int salida = ps.executeUpdate();
             if (salida != 1) {
@@ -87,6 +103,7 @@ public class LectorImp {
         }
         if (x != 1) {
             System.out.println("error al eliminar lector");
+            
         } else {
             System.out.println("eliminado correctamente");
         }
