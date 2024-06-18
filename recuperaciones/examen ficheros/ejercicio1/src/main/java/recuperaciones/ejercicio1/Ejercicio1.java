@@ -57,7 +57,7 @@ public class Ejercicio1 {
                             Funciones.guardaDepartamentos(profes);
                         }
                         case 6 -> {
-                            Profesor o = new Profesor("perez", "pepe", "72153424D", "pepe@perez.com", dep.getFirst());
+                            Profesor o = new Profesor("perez", "pepe", "72153424D", "pepe@perez.com", dep.get(0));
                             Funciones.insertarProfesor(o,p);
                         }
                         case 0 -> {
